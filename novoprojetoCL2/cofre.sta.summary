@@ -1,0 +1,101 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow Model Setup 'botaoConfirmar'
+Slack : -6.629
+TNS   : -70.201
+
+Type  : Slow Model Setup 'clk_27'
+Slack : -2.791
+TNS   : -28.564
+
+Type  : Slow Model Setup 'botaoPassarNumero'
+Slack : -2.120
+TNS   : -86.834
+
+Type  : Slow Model Setup 'botaoPassarDisplay'
+Slack : -1.949
+TNS   : -6.643
+
+Type  : Slow Model Hold 'botaoConfirmar'
+Slack : -0.876
+TNS   : -22.068
+
+Type  : Slow Model Hold 'botaoPassarDisplay'
+Slack : 0.391
+TNS   : 0.000
+
+Type  : Slow Model Hold 'botaoPassarNumero'
+Slack : 0.391
+TNS   : 0.000
+
+Type  : Slow Model Hold 'clk_27'
+Slack : 0.391
+TNS   : 0.000
+
+Type  : Slow Model Minimum Pulse Width 'clk_27'
+Slack : -1.380
+TNS   : -13.380
+
+Type  : Slow Model Minimum Pulse Width 'botaoConfirmar'
+Slack : -1.222
+TNS   : -58.222
+
+Type  : Slow Model Minimum Pulse Width 'botaoPassarNumero'
+Slack : -1.222
+TNS   : -45.222
+
+Type  : Slow Model Minimum Pulse Width 'botaoPassarDisplay'
+Slack : -1.222
+TNS   : -5.222
+
+Type  : Fast Model Setup 'botaoConfirmar'
+Slack : -2.302
+TNS   : -12.769
+
+Type  : Fast Model Setup 'clk_27'
+Slack : -0.731
+TNS   : -6.657
+
+Type  : Fast Model Setup 'botaoPassarNumero'
+Slack : -0.502
+TNS   : -19.392
+
+Type  : Fast Model Setup 'botaoPassarDisplay'
+Slack : -0.328
+TNS   : -0.810
+
+Type  : Fast Model Hold 'botaoConfirmar'
+Slack : -0.370
+TNS   : -8.359
+
+Type  : Fast Model Hold 'botaoPassarDisplay'
+Slack : 0.215
+TNS   : 0.000
+
+Type  : Fast Model Hold 'botaoPassarNumero'
+Slack : 0.215
+TNS   : 0.000
+
+Type  : Fast Model Hold 'clk_27'
+Slack : 0.215
+TNS   : 0.000
+
+Type  : Fast Model Minimum Pulse Width 'clk_27'
+Slack : -1.380
+TNS   : -13.380
+
+Type  : Fast Model Minimum Pulse Width 'botaoConfirmar'
+Slack : -1.222
+TNS   : -58.222
+
+Type  : Fast Model Minimum Pulse Width 'botaoPassarNumero'
+Slack : -1.222
+TNS   : -45.222
+
+Type  : Fast Model Minimum Pulse Width 'botaoPassarDisplay'
+Slack : -1.222
+TNS   : -5.222
+
+------------------------------------------------------------

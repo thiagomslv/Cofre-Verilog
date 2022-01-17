@@ -1,0 +1,886 @@
+Classic Timing Analyzer report for cofre
+Tue Oct 16 15:10:57 2018
+Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Timing Analyzer Summary
+  3. Timing Analyzer Settings
+  4. Clock Settings Summary
+  5. Parallel Compilation
+  6. Clock Setup: 'botaoPassarNumero'
+  7. Clock Setup: 'clk_27'
+  8. Clock Setup: 'botaoPassarDisplay'
+  9. Clock Setup: 'botaoConfirmar'
+ 10. tsu
+ 11. tco
+ 12. th
+ 13. Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2010 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Summary                                                                                                                                                                                                               ;
++-----------------------------------+-------+---------------+------------------------------------------------+------------------------------------+----------------------------+--------------------+--------------------+--------------+
+; Type                              ; Slack ; Required Time ; Actual Time                                    ; From                               ; To                         ; From Clock         ; To Clock           ; Failed Paths ;
++-----------------------------------+-------+---------------+------------------------------------------------+------------------------------------+----------------------------+--------------------+--------------------+--------------+
+; Worst-case tsu                    ; N/A   ; None          ; 8.263 ns                                       ; controleSistema[3]                 ; estado_atual.apagarDisplay ; --                 ; clk_27             ; 0            ;
+; Worst-case tco                    ; N/A   ; None          ; 10.663 ns                                      ; display4[1]~reg0                   ; display4[1]                ; botaoPassarNumero  ; --                 ; 0            ;
+; Worst-case th                     ; N/A   ; None          ; -5.375 ns                                      ; controleSistema[2]                 ; estado_atual.0000          ; --                 ; clk_27             ; 0            ;
+; Clock Setup: 'botaoConfirmar'     ; N/A   ; None          ; 199.16 MHz ( period = 5.021 ns )               ; usuariosNoSistema[0]               ; falhaID~reg0               ; botaoConfirmar     ; botaoConfirmar     ; 0            ;
+; Clock Setup: 'clk_27'             ; N/A   ; None          ; 380.37 MHz ( period = 2.629 ns )               ; estado_atual.digitarIdParaConferir ; estado_atual.apagarDisplay ; clk_27             ; clk_27             ; 0            ;
+; Clock Setup: 'botaoPassarDisplay' ; N/A   ; None          ; 419.64 MHz ( period = 2.383 ns )               ; displaySelecionado[1]              ; displaySelecionado[1]      ; botaoPassarDisplay ; botaoPassarDisplay ; 0            ;
+; Clock Setup: 'botaoPassarNumero'  ; N/A   ; None          ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay1[3]                ; display1[1]~reg0           ; botaoPassarNumero  ; botaoPassarNumero  ; 0            ;
+; Total number of failed paths      ;       ;               ;                                                ;                                    ;                            ;                    ;                    ; 0            ;
++-----------------------------------+-------+---------------+------------------------------------------------+------------------------------------+----------------------------+--------------------+--------------------+--------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Timing Analyzer Settings                                                                                                                            ;
++------------------------------------------------------------------------------------------------------+--------------------+------+----+-------------+
+; Option                                                                                               ; Setting            ; From ; To ; Entity Name ;
++------------------------------------------------------------------------------------------------------+--------------------+------+----+-------------+
+; Device Name                                                                                          ; EP2C35F672C6       ;      ;    ;             ;
+; Timing Models                                                                                        ; Final              ;      ;    ;             ;
+; Default hold multicycle                                                                              ; Same as Multicycle ;      ;    ;             ;
+; Cut paths between unrelated clock domains                                                            ; On                 ;      ;    ;             ;
+; Cut off read during write signal paths                                                               ; On                 ;      ;    ;             ;
+; Cut off feedback from I/O pins                                                                       ; On                 ;      ;    ;             ;
+; Report Combined Fast/Slow Timing                                                                     ; Off                ;      ;    ;             ;
+; Ignore Clock Settings                                                                                ; Off                ;      ;    ;             ;
+; Analyze latches as synchronous elements                                                              ; On                 ;      ;    ;             ;
+; Enable Recovery/Removal analysis                                                                     ; Off                ;      ;    ;             ;
+; Enable Clock Latency                                                                                 ; Off                ;      ;    ;             ;
+; Use TimeQuest Timing Analyzer                                                                        ; Off                ;      ;    ;             ;
+; Minimum Core Junction Temperature                                                                    ; 0                  ;      ;    ;             ;
+; Maximum Core Junction Temperature                                                                    ; 85                 ;      ;    ;             ;
+; Number of source nodes to report per destination node                                                ; 10                 ;      ;    ;             ;
+; Number of destination nodes to report                                                                ; 10                 ;      ;    ;             ;
+; Number of paths to report                                                                            ; 200                ;      ;    ;             ;
+; Report Minimum Timing Checks                                                                         ; Off                ;      ;    ;             ;
+; Use Fast Timing Models                                                                               ; Off                ;      ;    ;             ;
+; Report IO Paths Separately                                                                           ; Off                ;      ;    ;             ;
+; Perform Multicorner Analysis                                                                         ; On                 ;      ;    ;             ;
+; Reports the worst-case path for each clock domain and analysis                                       ; Off                ;      ;    ;             ;
+; Reports worst-case timing paths for each clock domain and analysis                                   ; On                 ;      ;    ;             ;
+; Specifies the maximum number of worst-case timing paths to report for each clock domain and analysis ; 100                ;      ;    ;             ;
+; Removes common clock path pessimism (CCPP) during slack computation                                  ; Off                ;      ;    ;             ;
+; Output I/O Timing Endpoint                                                                           ; Near End           ;      ;    ;             ;
++------------------------------------------------------------------------------------------------------+--------------------+------+----+-------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Settings Summary                                                                                                                                                                ;
++--------------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+; Clock Node Name    ; Clock Setting Name ; Type     ; Fmax Requirement ; Early Latency ; Late Latency ; Based on ; Multiply Base Fmax by ; Divide Base Fmax by ; Offset ; Phase offset ;
++--------------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+; botaoPassarNumero  ;                    ; User Pin ; None             ; 0.000 ns      ; 0.000 ns     ; --       ; N/A                   ; N/A                 ; N/A    ;              ;
+; clk_27             ;                    ; User Pin ; None             ; 0.000 ns      ; 0.000 ns     ; --       ; N/A                   ; N/A                 ; N/A    ;              ;
+; botaoPassarDisplay ;                    ; User Pin ; None             ; 0.000 ns      ; 0.000 ns     ; --       ; N/A                   ; N/A                 ; N/A    ;              ;
+; botaoConfirmar     ;                    ; User Pin ; None             ; 0.000 ns      ; 0.000 ns     ; --       ; N/A                   ; N/A                 ; N/A    ;              ;
++--------------------+--------------------+----------+------------------+---------------+--------------+----------+-----------------------+---------------------+--------+--------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 4      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Setup: 'botaoPassarNumero'                                                                                                                                                                                               ;
++-------+------------------------------------------------+---------------------+---------------------+-------------------+-------------------+-----------------------------+---------------------------+-------------------------+
+; Slack ; Actual fmax (period)                           ; From                ; To                  ; From Clock        ; To Clock          ; Required Setup Relationship ; Required Longest P2P Time ; Actual Longest P2P Time ;
++-------+------------------------------------------------+---------------------+---------------------+-------------------+-------------------+-----------------------------+---------------------------+-------------------------+
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay1[3] ; display1[1]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.792 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay1[2] ; contadorDisplay1[1] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.716 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay3[2] ; contadorDisplay3[0] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.715 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay2[3] ; display2[1]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.682 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay3[2] ; contadorDisplay3[3] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.677 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay3[2] ; contadorDisplay3[2] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.676 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay3[2] ; contadorDisplay3[1] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.675 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay2[2] ; contadorDisplay2[2] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.671 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay1[1] ; display1[0]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.669 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay2[2] ; contadorDisplay2[0] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.670 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay3[2] ; display3[3]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.667 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay3[2] ; display3[5]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.667 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay4[3] ; display4[2]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.662 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay2[1] ; display2[0]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.659 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay4[3] ; display4[1]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.659 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay4[3] ; display4[0]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.658 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay2[2] ; contadorDisplay2[1] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.648 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay2[2] ; contadorDisplay2[3] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.647 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay2[0] ; display2[2]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.644 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay2[2] ; display2[3]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.641 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay1[0] ; display1[2]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.638 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay2[3] ; display2[3]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.593 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay1[2] ; contadorDisplay1[3] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.589 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay1[0] ; contadorDisplay1[1] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.575 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay1[1] ; display1[1]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.573 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay1[0] ; contadorDisplay1[3] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.573 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay3[0] ; contadorDisplay3[0] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.560 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay3[2] ; display3[4]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.550 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay1[1] ; contadorDisplay1[3] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.541 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay3[2] ; display3[6]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.532 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay4[2] ; display4[1]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.526 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay3[0] ; contadorDisplay3[3] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.522 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay3[0] ; contadorDisplay3[2] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.521 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay3[0] ; contadorDisplay3[1] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.520 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay2[1] ; contadorDisplay2[2] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.516 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay2[1] ; contadorDisplay2[0] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.515 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay4[2] ; contadorDisplay4[0] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.505 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay4[2] ; contadorDisplay4[2] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.504 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay1[2] ; display1[5]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.497 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay3[0] ; display3[3]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.496 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay4[0] ; contadorDisplay4[0] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.496 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay4[0] ; contadorDisplay4[2] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.495 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay3[0] ; display3[5]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.494 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay2[1] ; contadorDisplay2[1] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.493 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay2[1] ; contadorDisplay2[3] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.492 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay1[0] ; display1[5]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.483 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay4[0] ; display4[1]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.483 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay1[2] ; display1[3]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.480 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay1[2] ; contadorDisplay1[0] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.472 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay2[2] ; display2[6]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.471 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay1[2] ; contadorDisplay1[2] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.469 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay2[2] ; display2[4]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.468 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay1[0] ; display1[3]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.465 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay4[1] ; display4[2]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.462 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay4[1] ; contadorDisplay4[0] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.461 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay3[1] ; contadorDisplay3[0] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.460 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay4[1] ; contadorDisplay4[2] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.460 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay1[2] ; display1[6]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.450 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay4[2] ; contadorDisplay4[1] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.448 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay1[0] ; contadorDisplay1[2] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.447 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay1[1] ; display1[5]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.447 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay2[3] ; display2[4]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.446 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay4[2] ; contadorDisplay4[3] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.446 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay4[0] ; contadorDisplay4[1] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.439 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay4[0] ; contadorDisplay4[3] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.437 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay1[3] ; contadorDisplay1[3] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.436 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay4[1] ; display4[0]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.432 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay1[1] ; display1[3]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.429 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay4[2] ; display4[3]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.429 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay3[1] ; display3[2]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.427 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay1[2] ; display1[1]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.424 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay3[1] ; contadorDisplay3[3] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.422 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay3[1] ; contadorDisplay3[2] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.421 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay3[1] ; contadorDisplay3[1] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.420 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay3[1] ; display3[5]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.416 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay4[1] ; display4[3]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.416 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay3[1] ; display3[3]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.414 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay4[1] ; contadorDisplay4[1] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.404 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay2[1] ; display2[1]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.402 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay4[1] ; contadorDisplay4[3] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.402 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay3[1] ; display3[1]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.398 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay3[3] ; display3[2]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.396 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay3[1] ; display3[0]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.394 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay3[0] ; display3[4]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.395 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay3[3] ; display3[1]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.389 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay2[3] ; display2[2]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.388 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay3[3] ; display3[0]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.386 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay2[3] ; display2[0]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.385 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay1[3] ; display1[2]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.378 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay1[3] ; display1[0]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.377 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay4[0] ; display4[3]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.371 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay3[0] ; display3[6]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.360 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay2[2] ; display2[2]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.356 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay2[0] ; contadorDisplay2[3] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.348 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay1[3] ; contadorDisplay1[1] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.346 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay1[3] ; display1[5]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.345 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay2[3] ; contadorDisplay2[2] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.339 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay2[3] ; contadorDisplay2[0] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.338 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay2[0] ; contadorDisplay2[2] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.332 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay1[0] ; contadorDisplay1[0] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.331 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay2[0] ; contadorDisplay2[0] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.331 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay1[3] ; display1[3]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.328 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay2[0] ; display2[3]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.321 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay4[2] ; display4[4]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.321 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay4[2] ; display4[6]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.320 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay4[2] ; display4[5]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.318 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay2[1] ; display2[6]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.317 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay4[0] ; display4[4]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.317 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay2[3] ; contadorDisplay2[1] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.316 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay2[3] ; contadorDisplay2[3] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.315 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay4[0] ; display4[6]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.313 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay4[0] ; display4[2]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.311 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay1[0] ; display1[6]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.310 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay2[2] ; display2[0]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.308 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay2[0] ; contadorDisplay2[1] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.309 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay4[0] ; display4[0]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.309 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay1[2] ; display1[4]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.308 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay2[2] ; display2[1]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.307 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay1[0] ; display1[1]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.306 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay1[0] ; display1[4]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.307 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay4[1] ; display4[5]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.307 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay3[0] ; display3[2]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.299 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay3[0] ; display3[0]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.296 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay3[1] ; display3[4]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.297 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay3[0] ; display3[1]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.295 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay1[2] ; display1[2]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.290 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay1[2] ; display1[0]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.289 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay3[1] ; display3[6]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.281 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay4[1] ; display4[4]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.279 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay1[1] ; display1[4]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.275 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay4[1] ; display4[6]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.274 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay2[1] ; display2[2]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.269 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay1[1] ; contadorDisplay1[1] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.267 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay2[2] ; display2[5]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.264 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay4[0] ; display4[5]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.263 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay2[3] ; display2[5]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.197 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay4[3] ; contadorDisplay4[0] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.189 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay4[3] ; contadorDisplay4[2] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.188 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay2[1] ; display2[3]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.182 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay3[3] ; contadorDisplay3[0] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.174 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay1[0] ; display1[0]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.165 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay3[2] ; display3[2]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.165 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay1[1] ; display1[2]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.164 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay3[2] ; display3[1]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.157 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay1[3] ; display1[4]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.156 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay4[1] ; display4[1]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.156 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay3[2] ; display3[0]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.154 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay4[2] ; display4[2]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.152 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay4[2] ; display4[0]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.149 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay1[1] ; contadorDisplay1[2] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.141 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay2[0] ; display2[1]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.139 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay2[3] ; display2[6]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.140 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay2[0] ; display2[0]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.138 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay3[3] ; contadorDisplay3[3] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.136 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay3[3] ; contadorDisplay3[2] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.135 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay3[3] ; contadorDisplay3[1] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.134 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay2[0] ; display2[4]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.133 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay2[0] ; display2[6]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.133 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay4[3] ; contadorDisplay4[1] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.132 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay4[3] ; contadorDisplay4[3] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.130 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay2[0] ; display2[5]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.128 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay3[3] ; display3[5]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.121 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay3[3] ; display3[3]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.119 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay4[3] ; display4[3]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.118 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay1[3] ; contadorDisplay1[0] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.102 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay1[3] ; contadorDisplay1[2] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.099 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay1[3] ; display1[6]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.086 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay1[1] ; contadorDisplay1[0] ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.023 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay2[1] ; display2[4]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.012 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay4[3] ; display4[6]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.009 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay3[3] ; display3[4]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.008 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay4[3] ; display4[4]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.008 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay4[3] ; display4[5]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.006 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay1[1] ; display1[6]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.004 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay2[1] ; display2[5]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 1.003 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; contadorDisplay3[3] ; display3[6]~reg0    ; botaoPassarNumero ; botaoPassarNumero ; None                        ; None                      ; 0.985 ns                ;
++-------+------------------------------------------------+---------------------+---------------------+-------------------+-------------------+-----------------------------+---------------------------+-------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Setup: 'clk_27'                                                                                                                                                                                                                        ;
++-------+------------------------------------------------+------------------------------------+------------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; Slack ; Actual fmax (period)                           ; From                               ; To                                 ; From Clock ; To Clock ; Required Setup Relationship ; Required Longest P2P Time ; Actual Longest P2P Time ;
++-------+------------------------------------------------+------------------------------------+------------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+; N/A   ; 380.37 MHz ( period = 2.629 ns )               ; estado_atual.digitarIdParaConferir ; estado_atual.apagarDisplay         ; clk_27     ; clk_27   ; None                        ; None                      ; 2.415 ns                ;
+; N/A   ; 380.52 MHz ( period = 2.628 ns )               ; estado_atual.digitarIdParaConferir ; estado_atual.confID                ; clk_27     ; clk_27   ; None                        ; None                      ; 2.414 ns                ;
+; N/A   ; 380.66 MHz ( period = 2.627 ns )               ; estado_atual.digitarIdParaConferir ; estado_atual.zerarApagarDisplay    ; clk_27     ; clk_27   ; None                        ; None                      ; 2.413 ns                ;
+; N/A   ; 380.95 MHz ( period = 2.625 ns )               ; estado_atual.digitarIdParaConferir ; estado_atual.digitarIdParaConferir ; clk_27     ; clk_27   ; None                        ; None                      ; 2.411 ns                ;
+; N/A   ; 380.95 MHz ( period = 2.625 ns )               ; estado_atual.digitarIdParaConferir ; estado_atual.registraID            ; clk_27     ; clk_27   ; None                        ; None                      ; 2.411 ns                ;
+; N/A   ; 381.24 MHz ( period = 2.623 ns )               ; estado_atual.digitarIdParaConferir ; estado_atual.cadastroID            ; clk_27     ; clk_27   ; None                        ; None                      ; 2.409 ns                ;
+; N/A   ; 381.53 MHz ( period = 2.621 ns )               ; estado_atual.digitarIdParaConferir ; estado_atual.registrarIdConferir   ; clk_27     ; clk_27   ; None                        ; None                      ; 2.407 ns                ;
+; N/A   ; 414.08 MHz ( period = 2.415 ns )               ; estado_atual.registrarIdConferir   ; estado_atual.apagarDisplay         ; clk_27     ; clk_27   ; None                        ; None                      ; 2.201 ns                ;
+; N/A   ; 414.25 MHz ( period = 2.414 ns )               ; estado_atual.registrarIdConferir   ; estado_atual.confID                ; clk_27     ; clk_27   ; None                        ; None                      ; 2.200 ns                ;
+; N/A   ; 414.42 MHz ( period = 2.413 ns )               ; estado_atual.registrarIdConferir   ; estado_atual.zerarApagarDisplay    ; clk_27     ; clk_27   ; None                        ; None                      ; 2.199 ns                ;
+; N/A   ; 414.77 MHz ( period = 2.411 ns )               ; estado_atual.registrarIdConferir   ; estado_atual.digitarIdParaConferir ; clk_27     ; clk_27   ; None                        ; None                      ; 2.197 ns                ;
+; N/A   ; 414.77 MHz ( period = 2.411 ns )               ; estado_atual.registrarIdConferir   ; estado_atual.registraID            ; clk_27     ; clk_27   ; None                        ; None                      ; 2.197 ns                ;
+; N/A   ; 415.11 MHz ( period = 2.409 ns )               ; estado_atual.registrarIdConferir   ; estado_atual.cadastroID            ; clk_27     ; clk_27   ; None                        ; None                      ; 2.195 ns                ;
+; N/A   ; 415.45 MHz ( period = 2.407 ns )               ; estado_atual.registrarIdConferir   ; estado_atual.registrarIdConferir   ; clk_27     ; clk_27   ; None                        ; None                      ; 2.193 ns                ;
+; N/A   ; Restricted to 420.17 MHz ( period = 2.380 ns ) ; estado_atual.apagarDisplay         ; estado_atual.apagarDisplay         ; clk_27     ; clk_27   ; None                        ; None                      ; 2.035 ns                ;
+; N/A   ; Restricted to 420.17 MHz ( period = 2.380 ns ) ; estado_atual.apagarDisplay         ; estado_atual.confID                ; clk_27     ; clk_27   ; None                        ; None                      ; 2.034 ns                ;
+; N/A   ; Restricted to 420.17 MHz ( period = 2.380 ns ) ; estado_atual.apagarDisplay         ; estado_atual.zerarApagarDisplay    ; clk_27     ; clk_27   ; None                        ; None                      ; 2.033 ns                ;
+; N/A   ; Restricted to 420.17 MHz ( period = 2.380 ns ) ; estado_atual.apagarDisplay         ; estado_atual.digitarIdParaConferir ; clk_27     ; clk_27   ; None                        ; None                      ; 2.031 ns                ;
+; N/A   ; Restricted to 420.17 MHz ( period = 2.380 ns ) ; estado_atual.apagarDisplay         ; estado_atual.registraID            ; clk_27     ; clk_27   ; None                        ; None                      ; 2.031 ns                ;
+; N/A   ; Restricted to 420.17 MHz ( period = 2.380 ns ) ; estado_atual.apagarDisplay         ; estado_atual.cadastroID            ; clk_27     ; clk_27   ; None                        ; None                      ; 2.029 ns                ;
+; N/A   ; Restricted to 420.17 MHz ( period = 2.380 ns ) ; estado_atual.apagarDisplay         ; estado_atual.registrarIdConferir   ; clk_27     ; clk_27   ; None                        ; None                      ; 2.027 ns                ;
+; N/A   ; Restricted to 420.17 MHz ( period = 2.380 ns ) ; estado_atual.0000                  ; estado_atual.apagarDisplay         ; clk_27     ; clk_27   ; None                        ; None                      ; 2.000 ns                ;
+; N/A   ; Restricted to 420.17 MHz ( period = 2.380 ns ) ; estado_atual.0000                  ; estado_atual.confID                ; clk_27     ; clk_27   ; None                        ; None                      ; 1.999 ns                ;
+; N/A   ; Restricted to 420.17 MHz ( period = 2.380 ns ) ; estado_atual.0000                  ; estado_atual.zerarApagarDisplay    ; clk_27     ; clk_27   ; None                        ; None                      ; 1.998 ns                ;
+; N/A   ; Restricted to 420.17 MHz ( period = 2.380 ns ) ; estado_atual.0000                  ; estado_atual.digitarIdParaConferir ; clk_27     ; clk_27   ; None                        ; None                      ; 1.996 ns                ;
+; N/A   ; Restricted to 420.17 MHz ( period = 2.380 ns ) ; estado_atual.0000                  ; estado_atual.registraID            ; clk_27     ; clk_27   ; None                        ; None                      ; 1.996 ns                ;
+; N/A   ; Restricted to 420.17 MHz ( period = 2.380 ns ) ; estado_atual.0000                  ; estado_atual.cadastroID            ; clk_27     ; clk_27   ; None                        ; None                      ; 1.994 ns                ;
+; N/A   ; Restricted to 420.17 MHz ( period = 2.380 ns ) ; estado_atual.0000                  ; estado_atual.registrarIdConferir   ; clk_27     ; clk_27   ; None                        ; None                      ; 1.992 ns                ;
+; N/A   ; Restricted to 420.17 MHz ( period = 2.380 ns ) ; estado_atual.registraID            ; estado_atual.apagarDisplay         ; clk_27     ; clk_27   ; None                        ; None                      ; 1.838 ns                ;
+; N/A   ; Restricted to 420.17 MHz ( period = 2.380 ns ) ; estado_atual.registraID            ; estado_atual.confID                ; clk_27     ; clk_27   ; None                        ; None                      ; 1.837 ns                ;
+; N/A   ; Restricted to 420.17 MHz ( period = 2.380 ns ) ; estado_atual.registraID            ; estado_atual.zerarApagarDisplay    ; clk_27     ; clk_27   ; None                        ; None                      ; 1.836 ns                ;
+; N/A   ; Restricted to 420.17 MHz ( period = 2.380 ns ) ; estado_atual.registraID            ; estado_atual.digitarIdParaConferir ; clk_27     ; clk_27   ; None                        ; None                      ; 1.834 ns                ;
+; N/A   ; Restricted to 420.17 MHz ( period = 2.380 ns ) ; estado_atual.registraID            ; estado_atual.registraID            ; clk_27     ; clk_27   ; None                        ; None                      ; 1.834 ns                ;
+; N/A   ; Restricted to 420.17 MHz ( period = 2.380 ns ) ; estado_atual.registraID            ; estado_atual.cadastroID            ; clk_27     ; clk_27   ; None                        ; None                      ; 1.832 ns                ;
+; N/A   ; Restricted to 420.17 MHz ( period = 2.380 ns ) ; estado_atual.registraID            ; estado_atual.registrarIdConferir   ; clk_27     ; clk_27   ; None                        ; None                      ; 1.830 ns                ;
+; N/A   ; Restricted to 420.17 MHz ( period = 2.380 ns ) ; estado_atual.zerarApagarDisplay    ; estado_atual.apagarDisplay         ; clk_27     ; clk_27   ; None                        ; None                      ; 1.723 ns                ;
+; N/A   ; Restricted to 420.17 MHz ( period = 2.380 ns ) ; estado_atual.zerarApagarDisplay    ; estado_atual.confID                ; clk_27     ; clk_27   ; None                        ; None                      ; 1.722 ns                ;
+; N/A   ; Restricted to 420.17 MHz ( period = 2.380 ns ) ; estado_atual.zerarApagarDisplay    ; estado_atual.zerarApagarDisplay    ; clk_27     ; clk_27   ; None                        ; None                      ; 1.721 ns                ;
+; N/A   ; Restricted to 420.17 MHz ( period = 2.380 ns ) ; estado_atual.zerarApagarDisplay    ; estado_atual.digitarIdParaConferir ; clk_27     ; clk_27   ; None                        ; None                      ; 1.719 ns                ;
+; N/A   ; Restricted to 420.17 MHz ( period = 2.380 ns ) ; estado_atual.zerarApagarDisplay    ; estado_atual.registraID            ; clk_27     ; clk_27   ; None                        ; None                      ; 1.719 ns                ;
+; N/A   ; Restricted to 420.17 MHz ( period = 2.380 ns ) ; estado_atual.zerarApagarDisplay    ; estado_atual.cadastroID            ; clk_27     ; clk_27   ; None                        ; None                      ; 1.717 ns                ;
+; N/A   ; Restricted to 420.17 MHz ( period = 2.380 ns ) ; estado_atual.zerarApagarDisplay    ; estado_atual.registrarIdConferir   ; clk_27     ; clk_27   ; None                        ; None                      ; 1.715 ns                ;
+; N/A   ; Restricted to 420.17 MHz ( period = 2.380 ns ) ; estado_atual.cadastroID            ; estado_atual.apagarDisplay         ; clk_27     ; clk_27   ; None                        ; None                      ; 1.687 ns                ;
+; N/A   ; Restricted to 420.17 MHz ( period = 2.380 ns ) ; estado_atual.cadastroID            ; estado_atual.confID                ; clk_27     ; clk_27   ; None                        ; None                      ; 1.686 ns                ;
+; N/A   ; Restricted to 420.17 MHz ( period = 2.380 ns ) ; estado_atual.cadastroID            ; estado_atual.zerarApagarDisplay    ; clk_27     ; clk_27   ; None                        ; None                      ; 1.685 ns                ;
+; N/A   ; Restricted to 420.17 MHz ( period = 2.380 ns ) ; estado_atual.cadastroID            ; estado_atual.digitarIdParaConferir ; clk_27     ; clk_27   ; None                        ; None                      ; 1.683 ns                ;
+; N/A   ; Restricted to 420.17 MHz ( period = 2.380 ns ) ; estado_atual.cadastroID            ; estado_atual.registraID            ; clk_27     ; clk_27   ; None                        ; None                      ; 1.683 ns                ;
+; N/A   ; Restricted to 420.17 MHz ( period = 2.380 ns ) ; estado_atual.cadastroID            ; estado_atual.cadastroID            ; clk_27     ; clk_27   ; None                        ; None                      ; 1.681 ns                ;
+; N/A   ; Restricted to 420.17 MHz ( period = 2.380 ns ) ; estado_atual.cadastroID            ; estado_atual.registrarIdConferir   ; clk_27     ; clk_27   ; None                        ; None                      ; 1.679 ns                ;
+; N/A   ; Restricted to 420.17 MHz ( period = 2.380 ns ) ; estado_atual.confID                ; estado_atual.registrarIdConferir   ; clk_27     ; clk_27   ; None                        ; None                      ; 1.615 ns                ;
+; N/A   ; Restricted to 420.17 MHz ( period = 2.380 ns ) ; estado_atual.confID                ; estado_atual.cadastroID            ; clk_27     ; clk_27   ; None                        ; None                      ; 1.611 ns                ;
+; N/A   ; Restricted to 420.17 MHz ( period = 2.380 ns ) ; estado_atual.confID                ; estado_atual.digitarIdParaConferir ; clk_27     ; clk_27   ; None                        ; None                      ; 1.610 ns                ;
+; N/A   ; Restricted to 420.17 MHz ( period = 2.380 ns ) ; estado_atual.confID                ; estado_atual.registraID            ; clk_27     ; clk_27   ; None                        ; None                      ; 1.610 ns                ;
+; N/A   ; Restricted to 420.17 MHz ( period = 2.380 ns ) ; estado_atual.confID                ; estado_atual.apagarDisplay         ; clk_27     ; clk_27   ; None                        ; None                      ; 1.609 ns                ;
+; N/A   ; Restricted to 420.17 MHz ( period = 2.380 ns ) ; estado_atual.confID                ; estado_atual.zerarApagarDisplay    ; clk_27     ; clk_27   ; None                        ; None                      ; 1.609 ns                ;
+; N/A   ; Restricted to 420.17 MHz ( period = 2.380 ns ) ; estado_atual.confID                ; estado_atual.confID                ; clk_27     ; clk_27   ; None                        ; None                      ; 1.608 ns                ;
+; N/A   ; Restricted to 420.17 MHz ( period = 2.380 ns ) ; estado_atual.confID                ; estado_atual.0000                  ; clk_27     ; clk_27   ; None                        ; None                      ; 1.378 ns                ;
+; N/A   ; Restricted to 420.17 MHz ( period = 2.380 ns ) ; estado_atual.0000                  ; estado_atual.0000                  ; clk_27     ; clk_27   ; None                        ; None                      ; 0.407 ns                ;
++-------+------------------------------------------------+------------------------------------+------------------------------------+------------+----------+-----------------------------+---------------------------+-------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Setup: 'botaoPassarDisplay'                                                                                                                                                                                                    ;
++-------+------------------------------------------------+-----------------------+-----------------------+--------------------+--------------------+-----------------------------+---------------------------+-------------------------+
+; Slack ; Actual fmax (period)                           ; From                  ; To                    ; From Clock         ; To Clock           ; Required Setup Relationship ; Required Longest P2P Time ; Actual Longest P2P Time ;
++-------+------------------------------------------------+-----------------------+-----------------------+--------------------+--------------------+-----------------------------+---------------------------+-------------------------+
+; N/A   ; 419.64 MHz ( period = 2.383 ns )               ; displaySelecionado[1] ; displaySelecionado[1] ; botaoPassarDisplay ; botaoPassarDisplay ; None                        ; None                      ; 2.169 ns                ;
+; N/A   ; 419.99 MHz ( period = 2.381 ns )               ; displaySelecionado[1] ; displaySelecionado[2] ; botaoPassarDisplay ; botaoPassarDisplay ; None                        ; None                      ; 2.167 ns                ;
+; N/A   ; 439.56 MHz ( period = 2.275 ns )               ; displaySelecionado[3] ; displaySelecionado[1] ; botaoPassarDisplay ; botaoPassarDisplay ; None                        ; None                      ; 2.061 ns                ;
+; N/A   ; 439.95 MHz ( period = 2.273 ns )               ; displaySelecionado[3] ; displaySelecionado[2] ; botaoPassarDisplay ; botaoPassarDisplay ; None                        ; None                      ; 2.059 ns                ;
+; N/A   ; 443.66 MHz ( period = 2.254 ns )               ; displaySelecionado[2] ; displaySelecionado[1] ; botaoPassarDisplay ; botaoPassarDisplay ; None                        ; None                      ; 2.040 ns                ;
+; N/A   ; 444.05 MHz ( period = 2.252 ns )               ; displaySelecionado[2] ; displaySelecionado[2] ; botaoPassarDisplay ; botaoPassarDisplay ; None                        ; None                      ; 2.038 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; displaySelecionado[0] ; displaySelecionado[1] ; botaoPassarDisplay ; botaoPassarDisplay ; None                        ; None                      ; 1.902 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; displaySelecionado[0] ; displaySelecionado[2] ; botaoPassarDisplay ; botaoPassarDisplay ; None                        ; None                      ; 1.900 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; displaySelecionado[1] ; displaySelecionado[0] ; botaoPassarDisplay ; botaoPassarDisplay ; None                        ; None                      ; 1.766 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; displaySelecionado[3] ; displaySelecionado[0] ; botaoPassarDisplay ; botaoPassarDisplay ; None                        ; None                      ; 1.658 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; displaySelecionado[2] ; displaySelecionado[0] ; botaoPassarDisplay ; botaoPassarDisplay ; None                        ; None                      ; 1.637 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; displaySelecionado[0] ; displaySelecionado[0] ; botaoPassarDisplay ; botaoPassarDisplay ; None                        ; None                      ; 1.499 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; displaySelecionado[1] ; displaySelecionado[3] ; botaoPassarDisplay ; botaoPassarDisplay ; None                        ; None                      ; 1.369 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; displaySelecionado[2] ; displaySelecionado[3] ; botaoPassarDisplay ; botaoPassarDisplay ; None                        ; None                      ; 1.240 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; displaySelecionado[0] ; displaySelecionado[3] ; botaoPassarDisplay ; botaoPassarDisplay ; None                        ; None                      ; 1.102 ns                ;
+; N/A   ; Restricted to 450.05 MHz ( period = 2.222 ns ) ; displaySelecionado[3] ; displaySelecionado[3] ; botaoPassarDisplay ; botaoPassarDisplay ; None                        ; None                      ; 0.407 ns                ;
++-------+------------------------------------------------+-----------------------+-----------------------+--------------------+--------------------+-----------------------------+---------------------------+-------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Clock Setup: 'botaoConfirmar'                                                                                                                                                                                                                                ;
++-----------------------------------------+-----------------------------------------------------+----------------------+-----------------+----------------+----------------+-----------------------------+---------------------------+-------------------------+
+; Slack                                   ; Actual fmax (period)                                ; From                 ; To              ; From Clock     ; To Clock       ; Required Setup Relationship ; Required Longest P2P Time ; Actual Longest P2P Time ;
++-----------------------------------------+-----------------------------------------------------+----------------------+-----------------+----------------+----------------+-----------------------------+---------------------------+-------------------------+
+; N/A                                     ; 199.16 MHz ( period = 5.021 ns )                    ; usuariosNoSistema[0] ; falhaID~reg0    ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 4.795 ns                ;
+; N/A                                     ; 199.20 MHz ( period = 5.020 ns )                    ; usuariosNoSistema[0] ; aceitoID~reg0   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 4.794 ns                ;
+; N/A                                     ; 206.57 MHz ( period = 4.841 ns )                    ; usuariosNoSistema[2] ; falhaID~reg0    ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 4.615 ns                ;
+; N/A                                     ; 206.61 MHz ( period = 4.840 ns )                    ; usuariosNoSistema[2] ; aceitoID~reg0   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 4.614 ns                ;
+; N/A                                     ; 208.12 MHz ( period = 4.805 ns )                    ; auxIdConferir1[1]    ; falhaID~reg0    ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 4.546 ns                ;
+; N/A                                     ; 208.16 MHz ( period = 4.804 ns )                    ; auxIdConferir1[1]    ; aceitoID~reg0   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 4.545 ns                ;
+; N/A                                     ; 210.75 MHz ( period = 4.745 ns )                    ; usuariosNoSistema[1] ; falhaID~reg0    ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 4.519 ns                ;
+; N/A                                     ; 210.79 MHz ( period = 4.744 ns )                    ; usuariosNoSistema[1] ; aceitoID~reg0   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 4.518 ns                ;
+; N/A                                     ; 213.27 MHz ( period = 4.689 ns )                    ; auxIdConferir2[1]    ; falhaID~reg0    ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 4.430 ns                ;
+; N/A                                     ; 213.31 MHz ( period = 4.688 ns )                    ; auxIdConferir2[1]    ; aceitoID~reg0   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 4.429 ns                ;
+; N/A                                     ; 217.91 MHz ( period = 4.589 ns )                    ; auxIdConferir2[0]    ; falhaID~reg0    ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 4.330 ns                ;
+; N/A                                     ; 217.96 MHz ( period = 4.588 ns )                    ; auxIdConferir2[0]    ; aceitoID~reg0   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 4.329 ns                ;
+; N/A                                     ; 219.25 MHz ( period = 4.561 ns )                    ; auxIdConferir2[3]    ; falhaID~reg0    ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 4.302 ns                ;
+; N/A                                     ; 219.30 MHz ( period = 4.560 ns )                    ; auxIdConferir2[3]    ; aceitoID~reg0   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 4.301 ns                ;
+; N/A                                     ; 219.44 MHz ( period = 4.557 ns )                    ; auxIdConferir3[2]    ; falhaID~reg0    ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 4.312 ns                ;
+; N/A                                     ; 219.49 MHz ( period = 4.556 ns )                    ; auxIdConferir3[2]    ; aceitoID~reg0   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 4.311 ns                ;
+; N/A                                     ; 219.68 MHz ( period = 4.552 ns )                    ; auxIdConferir3[3]    ; falhaID~reg0    ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 4.307 ns                ;
+; N/A                                     ; 219.73 MHz ( period = 4.551 ns )                    ; auxIdConferir3[3]    ; aceitoID~reg0   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 4.306 ns                ;
+; N/A                                     ; 220.17 MHz ( period = 4.542 ns )                    ; auxIdConferir1[0]    ; falhaID~reg0    ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 4.297 ns                ;
+; N/A                                     ; 220.22 MHz ( period = 4.541 ns )                    ; auxIdConferir1[0]    ; aceitoID~reg0   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 4.296 ns                ;
+; N/A                                     ; 220.75 MHz ( period = 4.530 ns )                    ; auxIdConferir1[3]    ; falhaID~reg0    ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 4.285 ns                ;
+; N/A                                     ; 220.80 MHz ( period = 4.529 ns )                    ; auxIdConferir1[3]    ; aceitoID~reg0   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 4.284 ns                ;
+; N/A                                     ; 224.01 MHz ( period = 4.464 ns )                    ; auxIdConferir3[1]    ; falhaID~reg0    ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 4.219 ns                ;
+; N/A                                     ; 224.06 MHz ( period = 4.463 ns )                    ; auxIdConferir3[1]    ; aceitoID~reg0   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 4.218 ns                ;
+; N/A                                     ; 226.24 MHz ( period = 4.420 ns )                    ; auxIdConferir2[2]    ; falhaID~reg0    ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 4.161 ns                ;
+; N/A                                     ; 226.30 MHz ( period = 4.419 ns )                    ; auxIdConferir2[2]    ; aceitoID~reg0   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 4.160 ns                ;
+; N/A                                     ; 231.86 MHz ( period = 4.313 ns )                    ; auxIdConferir3[0]    ; falhaID~reg0    ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 4.068 ns                ;
+; N/A                                     ; 231.91 MHz ( period = 4.312 ns )                    ; auxIdConferir3[0]    ; aceitoID~reg0   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 4.067 ns                ;
+; N/A                                     ; 235.18 MHz ( period = 4.252 ns )                    ; usuariosNoSistema[0] ; conferirId[2]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 4.025 ns                ;
+; N/A                                     ; 235.24 MHz ( period = 4.251 ns )                    ; usuariosNoSistema[0] ; conferirId[1]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 4.024 ns                ;
+; N/A                                     ; 240.67 MHz ( period = 4.155 ns )                    ; usuario1_id2[1]      ; falhaID~reg0    ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.929 ns                ;
+; N/A                                     ; 240.73 MHz ( period = 4.154 ns )                    ; usuario1_id2[1]      ; aceitoID~reg0   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.928 ns                ;
+; N/A                                     ; 240.73 MHz ( period = 4.154 ns )                    ; usuario1_id3[2]      ; falhaID~reg0    ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.928 ns                ;
+; N/A                                     ; 240.79 MHz ( period = 4.153 ns )                    ; usuario1_id3[2]      ; aceitoID~reg0   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.927 ns                ;
+; N/A                                     ; 244.92 MHz ( period = 4.083 ns )                    ; auxIdConferir1[2]    ; falhaID~reg0    ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.838 ns                ;
+; N/A                                     ; 244.98 MHz ( period = 4.082 ns )                    ; auxIdConferir1[2]    ; aceitoID~reg0   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.837 ns                ;
+; N/A                                     ; 245.58 MHz ( period = 4.072 ns )                    ; usuariosNoSistema[2] ; conferirId[2]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.845 ns                ;
+; N/A                                     ; 245.64 MHz ( period = 4.071 ns )                    ; usuariosNoSistema[2] ; conferirId[1]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.844 ns                ;
+; N/A                                     ; 246.61 MHz ( period = 4.055 ns )                    ; usuario1_id3[1]      ; falhaID~reg0    ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.829 ns                ;
+; N/A                                     ; 246.67 MHz ( period = 4.054 ns )                    ; usuario1_id3[1]      ; aceitoID~reg0   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.828 ns                ;
+; N/A                                     ; 247.77 MHz ( period = 4.036 ns )                    ; auxIdConferir1[1]    ; conferirId[2]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.776 ns                ;
+; N/A                                     ; 248.32 MHz ( period = 4.027 ns )                    ; usuariosNoSistema[0] ; conferirId[0]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.803 ns                ;
+; N/A                                     ; 251.51 MHz ( period = 3.976 ns )                    ; usuariosNoSistema[1] ; conferirId[2]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.749 ns                ;
+; N/A                                     ; 251.57 MHz ( period = 3.975 ns )                    ; usuariosNoSistema[1] ; conferirId[1]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.748 ns                ;
+; N/A                                     ; 252.14 MHz ( period = 3.966 ns )                    ; auxIdConferir4[0]    ; falhaID~reg0    ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.707 ns                ;
+; N/A                                     ; 252.21 MHz ( period = 3.965 ns )                    ; auxIdConferir4[0]    ; aceitoID~reg0   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.706 ns                ;
+; N/A                                     ; 255.10 MHz ( period = 3.920 ns )                    ; auxIdConferir2[1]    ; conferirId[1]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.660 ns                ;
+; N/A                                     ; 255.10 MHz ( period = 3.920 ns )                    ; auxIdConferir2[1]    ; conferirId[2]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.660 ns                ;
+; N/A                                     ; 256.87 MHz ( period = 3.893 ns )                    ; auxIdConferir1[1]    ; conferirId[1]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.633 ns                ;
+; N/A                                     ; 258.13 MHz ( period = 3.874 ns )                    ; usuario1_id2[0]      ; falhaID~reg0    ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.648 ns                ;
+; N/A                                     ; 258.20 MHz ( period = 3.873 ns )                    ; usuario1_id2[0]      ; aceitoID~reg0   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.647 ns                ;
+; N/A                                     ; 259.94 MHz ( period = 3.847 ns )                    ; usuariosNoSistema[2] ; conferirId[0]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.623 ns                ;
+; N/A                                     ; 261.71 MHz ( period = 3.821 ns )                    ; usuario1_id4[2]      ; falhaID~reg0    ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.562 ns                ;
+; N/A                                     ; 261.78 MHz ( period = 3.820 ns )                    ; usuario1_id4[2]      ; aceitoID~reg0   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.561 ns                ;
+; N/A                                     ; 261.78 MHz ( period = 3.820 ns )                    ; auxIdConferir2[0]    ; conferirId[1]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.560 ns                ;
+; N/A                                     ; 261.78 MHz ( period = 3.820 ns )                    ; auxIdConferir2[0]    ; conferirId[2]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.560 ns                ;
+; N/A                                     ; 262.33 MHz ( period = 3.812 ns )                    ; usuario1_id4[3]      ; falhaID~reg0    ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.553 ns                ;
+; N/A                                     ; 262.40 MHz ( period = 3.811 ns )                    ; usuario1_id4[3]      ; aceitoID~reg0   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.552 ns                ;
+; N/A                                     ; 262.81 MHz ( period = 3.805 ns )                    ; auxIdConferir4[3]    ; falhaID~reg0    ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.546 ns                ;
+; N/A                                     ; 262.88 MHz ( period = 3.804 ns )                    ; auxIdConferir4[3]    ; aceitoID~reg0   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.545 ns                ;
+; N/A                                     ; 263.23 MHz ( period = 3.799 ns )                    ; usuario1_id2[3]      ; falhaID~reg0    ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.573 ns                ;
+; N/A                                     ; 263.30 MHz ( period = 3.798 ns )                    ; usuario1_id2[3]      ; aceitoID~reg0   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.572 ns                ;
+; N/A                                     ; 263.50 MHz ( period = 3.795 ns )                    ; auxIdConferir4[2]    ; falhaID~reg0    ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.536 ns                ;
+; N/A                                     ; 263.57 MHz ( period = 3.794 ns )                    ; auxIdConferir4[2]    ; aceitoID~reg0   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.535 ns                ;
+; N/A                                     ; 263.71 MHz ( period = 3.792 ns )                    ; auxIdConferir2[3]    ; conferirId[1]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.532 ns                ;
+; N/A                                     ; 263.71 MHz ( period = 3.792 ns )                    ; auxIdConferir2[3]    ; conferirId[2]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.532 ns                ;
+; N/A                                     ; 263.99 MHz ( period = 3.788 ns )                    ; auxIdConferir3[2]    ; conferirId[2]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.542 ns                ;
+; N/A                                     ; 264.06 MHz ( period = 3.787 ns )                    ; auxIdConferir3[2]    ; conferirId[1]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.541 ns                ;
+; N/A                                     ; 264.20 MHz ( period = 3.785 ns )                    ; usuario1_id1[1]      ; falhaID~reg0    ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.637 ns                ;
+; N/A                                     ; 264.27 MHz ( period = 3.784 ns )                    ; usuario1_id1[1]      ; aceitoID~reg0   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.636 ns                ;
+; N/A                                     ; 264.34 MHz ( period = 3.783 ns )                    ; auxIdConferir3[3]    ; conferirId[2]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.537 ns                ;
+; N/A                                     ; 264.41 MHz ( period = 3.782 ns )                    ; auxIdConferir3[3]    ; conferirId[1]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.536 ns                ;
+; N/A                                     ; 265.04 MHz ( period = 3.773 ns )                    ; auxIdConferir1[0]    ; conferirId[2]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.527 ns                ;
+; N/A                                     ; 265.89 MHz ( period = 3.761 ns )                    ; auxIdConferir1[3]    ; conferirId[2]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.515 ns                ;
+; N/A                                     ; 266.10 MHz ( period = 3.758 ns )                    ; usuario1_id3[3]      ; falhaID~reg0    ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.610 ns                ;
+; N/A                                     ; 266.17 MHz ( period = 3.757 ns )                    ; usuario1_id3[3]      ; aceitoID~reg0   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.609 ns                ;
+; N/A                                     ; 266.60 MHz ( period = 3.751 ns )                    ; usuariosNoSistema[1] ; conferirId[0]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.527 ns                ;
+; N/A                                     ; 266.67 MHz ( period = 3.750 ns )                    ; usuario1_id3[0]      ; falhaID~reg0    ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.524 ns                ;
+; N/A                                     ; 266.74 MHz ( period = 3.749 ns )                    ; usuario1_id3[0]      ; aceitoID~reg0   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.523 ns                ;
+; N/A                                     ; 266.81 MHz ( period = 3.748 ns )                    ; usuario1_id2[2]      ; falhaID~reg0    ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.522 ns                ;
+; N/A                                     ; 266.88 MHz ( period = 3.747 ns )                    ; usuario1_id2[2]      ; aceitoID~reg0   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.521 ns                ;
+; N/A                                     ; 270.12 MHz ( period = 3.702 ns )                    ; auxIdConferir2[1]    ; conferirId[0]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.445 ns                ;
+; N/A                                     ; 270.64 MHz ( period = 3.695 ns )                    ; auxIdConferir3[1]    ; conferirId[1]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.449 ns                ;
+; N/A                                     ; 270.64 MHz ( period = 3.695 ns )                    ; auxIdConferir3[1]    ; conferirId[2]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.449 ns                ;
+; N/A                                     ; 270.86 MHz ( period = 3.692 ns )                    ; auxIdConferir4[1]    ; falhaID~reg0    ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.433 ns                ;
+; N/A                                     ; 270.93 MHz ( period = 3.691 ns )                    ; auxIdConferir4[1]    ; aceitoID~reg0   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.432 ns                ;
+; N/A                                     ; 273.00 MHz ( period = 3.663 ns )                    ; usuario1_id1[0]      ; falhaID~reg0    ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.515 ns                ;
+; N/A                                     ; 273.07 MHz ( period = 3.662 ns )                    ; usuario1_id1[0]      ; aceitoID~reg0   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.514 ns                ;
+; N/A                                     ; 273.90 MHz ( period = 3.651 ns )                    ; auxIdConferir2[2]    ; conferirId[1]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.391 ns                ;
+; N/A                                     ; 273.90 MHz ( period = 3.651 ns )                    ; auxIdConferir2[2]    ; conferirId[2]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.391 ns                ;
+; N/A                                     ; 275.48 MHz ( period = 3.630 ns )                    ; auxIdConferir1[0]    ; conferirId[1]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.384 ns                ;
+; N/A                                     ; 276.40 MHz ( period = 3.618 ns )                    ; auxIdConferir1[3]    ; conferirId[1]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.372 ns                ;
+; N/A                                     ; 277.62 MHz ( period = 3.602 ns )                    ; auxIdConferir2[0]    ; conferirId[0]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.345 ns                ;
+; N/A                                     ; 279.80 MHz ( period = 3.574 ns )                    ; auxIdConferir2[3]    ; conferirId[0]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.317 ns                ;
+; N/A                                     ; 279.88 MHz ( period = 3.573 ns )                    ; usuario1_id4[1]      ; falhaID~reg0    ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.314 ns                ;
+; N/A                                     ; 279.96 MHz ( period = 3.572 ns )                    ; usuario1_id4[1]      ; aceitoID~reg0   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.313 ns                ;
+; N/A                                     ; 280.90 MHz ( period = 3.560 ns )                    ; usuario1_id4[0]      ; falhaID~reg0    ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.301 ns                ;
+; N/A                                     ; 280.98 MHz ( period = 3.559 ns )                    ; usuario1_id4[0]      ; aceitoID~reg0   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.300 ns                ;
+; N/A                                     ; 282.17 MHz ( period = 3.544 ns )                    ; auxIdConferir3[0]    ; conferirId[1]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.298 ns                ;
+; N/A                                     ; 282.17 MHz ( period = 3.544 ns )                    ; auxIdConferir3[0]    ; conferirId[2]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.298 ns                ;
+; N/A                                     ; 287.60 MHz ( period = 3.477 ns )                    ; auxIdConferir3[1]    ; conferirId[0]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.234 ns                ;
+; N/A                                     ; 291.29 MHz ( period = 3.433 ns )                    ; auxIdConferir2[2]    ; conferirId[0]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.176 ns                ;
+; N/A                                     ; 294.90 MHz ( period = 3.391 ns )                    ; usuario1_id1[3]      ; falhaID~reg0    ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.243 ns                ;
+; N/A                                     ; 294.99 MHz ( period = 3.390 ns )                    ; usuario1_id1[3]      ; aceitoID~reg0   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.242 ns                ;
+; N/A                                     ; 295.33 MHz ( period = 3.386 ns )                    ; auxIdConferir1[1]    ; conferirId[0]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.129 ns                ;
+; N/A                                     ; 295.33 MHz ( period = 3.386 ns )                    ; usuario1_id2[1]      ; conferirId[1]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.159 ns                ;
+; N/A                                     ; 295.33 MHz ( period = 3.386 ns )                    ; usuario1_id2[1]      ; conferirId[2]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.159 ns                ;
+; N/A                                     ; 295.42 MHz ( period = 3.385 ns )                    ; usuario1_id3[2]      ; conferirId[2]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.158 ns                ;
+; N/A                                     ; 295.51 MHz ( period = 3.384 ns )                    ; usuario1_id3[2]      ; conferirId[1]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.157 ns                ;
+; N/A                                     ; 299.58 MHz ( period = 3.338 ns )                    ; auxIdConferir1[3]    ; conferirId[0]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.095 ns                ;
+; N/A                                     ; 300.66 MHz ( period = 3.326 ns )                    ; auxIdConferir3[0]    ; conferirId[0]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.083 ns                ;
+; N/A                                     ; 301.30 MHz ( period = 3.319 ns )                    ; auxIdConferir3[2]    ; conferirId[0]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.076 ns                ;
+; N/A                                     ; 301.75 MHz ( period = 3.314 ns )                    ; auxIdConferir3[3]    ; conferirId[0]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.071 ns                ;
+; N/A                                     ; 301.75 MHz ( period = 3.314 ns )                    ; auxIdConferir1[2]    ; conferirId[2]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.068 ns                ;
+; N/A                                     ; 304.32 MHz ( period = 3.286 ns )                    ; usuario1_id3[1]      ; conferirId[1]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.059 ns                ;
+; N/A                                     ; 304.32 MHz ( period = 3.286 ns )                    ; usuario1_id3[1]      ; conferirId[2]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.059 ns                ;
+; N/A                                     ; 305.53 MHz ( period = 3.273 ns )                    ; usuario1_id1[2]      ; falhaID~reg0    ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.125 ns                ;
+; N/A                                     ; 305.62 MHz ( period = 3.272 ns )                    ; usuario1_id1[2]      ; aceitoID~reg0   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 3.124 ns                ;
+; N/A                                     ; 312.79 MHz ( period = 3.197 ns )                    ; auxIdConferir4[0]    ; conferirId[1]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.937 ns                ;
+; N/A                                     ; 312.79 MHz ( period = 3.197 ns )                    ; auxIdConferir4[0]    ; conferirId[2]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.937 ns                ;
+; N/A                                     ; 315.36 MHz ( period = 3.171 ns )                    ; auxIdConferir1[2]    ; conferirId[1]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.925 ns                ;
+; N/A                                     ; 315.66 MHz ( period = 3.168 ns )                    ; usuario1_id2[1]      ; conferirId[0]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.944 ns                ;
+; N/A                                     ; 318.47 MHz ( period = 3.140 ns )                    ; auxIdConferir4[0]    ; conferirId[0]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.883 ns                ;
+; N/A                                     ; 320.20 MHz ( period = 3.123 ns )                    ; auxIdConferir1[0]    ; conferirId[0]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.880 ns                ;
+; N/A                                     ; 322.06 MHz ( period = 3.105 ns )                    ; usuario1_id2[0]      ; conferirId[1]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.878 ns                ;
+; N/A                                     ; 322.06 MHz ( period = 3.105 ns )                    ; usuario1_id2[0]      ; conferirId[2]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.878 ns                ;
+; N/A                                     ; 325.95 MHz ( period = 3.068 ns )                    ; usuario1_id3[1]      ; conferirId[0]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.844 ns                ;
+; N/A                                     ; 327.65 MHz ( period = 3.052 ns )                    ; usuario1_id4[2]      ; conferirId[1]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.792 ns                ;
+; N/A                                     ; 327.65 MHz ( period = 3.052 ns )                    ; usuario1_id4[2]      ; conferirId[2]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.792 ns                ;
+; N/A                                     ; 328.62 MHz ( period = 3.043 ns )                    ; usuario1_id4[3]      ; conferirId[1]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.783 ns                ;
+; N/A                                     ; 328.62 MHz ( period = 3.043 ns )                    ; usuario1_id4[3]      ; conferirId[2]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.783 ns                ;
+; N/A                                     ; 329.38 MHz ( period = 3.036 ns )                    ; auxIdConferir4[3]    ; conferirId[1]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.776 ns                ;
+; N/A                                     ; 329.38 MHz ( period = 3.036 ns )                    ; auxIdConferir4[3]    ; conferirId[2]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.776 ns                ;
+; N/A                                     ; 330.03 MHz ( period = 3.030 ns )                    ; usuario1_id2[3]      ; conferirId[1]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.803 ns                ;
+; N/A                                     ; 330.03 MHz ( period = 3.030 ns )                    ; usuario1_id2[3]      ; conferirId[2]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.803 ns                ;
+; N/A                                     ; 330.47 MHz ( period = 3.026 ns )                    ; auxIdConferir4[2]    ; conferirId[1]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.766 ns                ;
+; N/A                                     ; 330.47 MHz ( period = 3.026 ns )                    ; auxIdConferir4[2]    ; conferirId[2]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.766 ns                ;
+; N/A                                     ; 331.56 MHz ( period = 3.016 ns )                    ; usuario1_id1[1]      ; conferirId[2]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.867 ns                ;
+; N/A                                     ; 333.89 MHz ( period = 2.995 ns )                    ; usuario1_id4[2]      ; conferirId[0]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.738 ns                ;
+; N/A                                     ; 334.56 MHz ( period = 2.989 ns )                    ; usuario1_id3[3]      ; conferirId[2]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.840 ns                ;
+; N/A                                     ; 334.67 MHz ( period = 2.988 ns )                    ; usuario1_id3[3]      ; conferirId[1]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.839 ns                ;
+; N/A                                     ; 334.90 MHz ( period = 2.986 ns )                    ; usuario1_id4[3]      ; conferirId[0]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.729 ns                ;
+; N/A                                     ; 335.46 MHz ( period = 2.981 ns )                    ; usuario1_id3[0]      ; conferirId[1]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.754 ns                ;
+; N/A                                     ; 335.46 MHz ( period = 2.981 ns )                    ; usuario1_id3[0]      ; conferirId[2]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.754 ns                ;
+; N/A                                     ; 335.68 MHz ( period = 2.979 ns )                    ; auxIdConferir4[3]    ; conferirId[0]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.722 ns                ;
+; N/A                                     ; 335.68 MHz ( period = 2.979 ns )                    ; usuario1_id2[2]      ; conferirId[1]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.752 ns                ;
+; N/A                                     ; 335.68 MHz ( period = 2.979 ns )                    ; usuario1_id2[2]      ; conferirId[2]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.752 ns                ;
+; N/A                                     ; 336.81 MHz ( period = 2.969 ns )                    ; auxIdConferir4[2]    ; conferirId[0]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.712 ns                ;
+; N/A                                     ; 342.11 MHz ( period = 2.923 ns )                    ; auxIdConferir4[1]    ; conferirId[1]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.663 ns                ;
+; N/A                                     ; 342.11 MHz ( period = 2.923 ns )                    ; auxIdConferir4[1]    ; conferirId[2]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.663 ns                ;
+; N/A                                     ; 342.94 MHz ( period = 2.916 ns )                    ; usuario1_id3[2]      ; conferirId[0]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.692 ns                ;
+; N/A                                     ; 343.52 MHz ( period = 2.911 ns )                    ; conferirId[1]        ; falhaID~reg0    ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.698 ns                ;
+; N/A                                     ; 343.64 MHz ( period = 2.910 ns )                    ; conferirId[1]        ; aceitoID~reg0   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.697 ns                ;
+; N/A                                     ; 345.54 MHz ( period = 2.894 ns )                    ; usuario1_id1[0]      ; conferirId[2]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.745 ns                ;
+; N/A                                     ; 345.90 MHz ( period = 2.891 ns )                    ; auxIdConferir1[2]    ; conferirId[0]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.648 ns                ;
+; N/A                                     ; 346.38 MHz ( period = 2.887 ns )                    ; usuario1_id2[0]      ; conferirId[0]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.663 ns                ;
+; N/A                                     ; 348.07 MHz ( period = 2.873 ns )                    ; usuario1_id1[1]      ; conferirId[1]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.724 ns                ;
+; N/A                                     ; 348.92 MHz ( period = 2.866 ns )                    ; auxIdConferir4[1]    ; conferirId[0]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.609 ns                ;
+; N/A                                     ; 350.26 MHz ( period = 2.855 ns )                    ; conferirId[0]        ; falhaID~reg0    ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.639 ns                ;
+; N/A                                     ; 350.39 MHz ( period = 2.854 ns )                    ; conferirId[0]        ; aceitoID~reg0   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.638 ns                ;
+; N/A                                     ; 355.62 MHz ( period = 2.812 ns )                    ; usuario1_id2[3]      ; conferirId[0]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.588 ns                ;
+; N/A                                     ; 356.63 MHz ( period = 2.804 ns )                    ; usuario1_id4[1]      ; conferirId[1]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.544 ns                ;
+; N/A                                     ; 356.63 MHz ( period = 2.804 ns )                    ; usuario1_id4[1]      ; conferirId[2]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.544 ns                ;
+; N/A                                     ; 358.29 MHz ( period = 2.791 ns )                    ; usuario1_id4[0]      ; conferirId[1]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.531 ns                ;
+; N/A                                     ; 358.29 MHz ( period = 2.791 ns )                    ; usuario1_id4[0]      ; conferirId[2]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.531 ns                ;
+; N/A                                     ; 361.93 MHz ( period = 2.763 ns )                    ; usuario1_id3[0]      ; conferirId[0]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.539 ns                ;
+; N/A                                     ; 362.19 MHz ( period = 2.761 ns )                    ; usuario1_id2[2]      ; conferirId[0]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.537 ns                ;
+; N/A                                     ; 363.50 MHz ( period = 2.751 ns )                    ; usuario1_id1[0]      ; conferirId[1]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.602 ns                ;
+; N/A                                     ; 364.03 MHz ( period = 2.747 ns )                    ; usuario1_id4[1]      ; conferirId[0]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.490 ns                ;
+; N/A                                     ; 365.10 MHz ( period = 2.739 ns )                    ; conferirId[2]        ; falhaID~reg0    ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.526 ns                ;
+; N/A                                     ; 365.23 MHz ( period = 2.738 ns )                    ; conferirId[2]        ; aceitoID~reg0   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.525 ns                ;
+; N/A                                     ; 365.76 MHz ( period = 2.734 ns )                    ; usuario1_id4[0]      ; conferirId[0]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.477 ns                ;
+; N/A                                     ; 381.39 MHz ( period = 2.622 ns )                    ; usuario1_id1[3]      ; conferirId[2]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.473 ns                ;
+; N/A                                     ; 396.83 MHz ( period = 2.520 ns )                    ; usuario1_id3[3]      ; conferirId[0]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.374 ns                ;
+; N/A                                     ; 399.36 MHz ( period = 2.504 ns )                    ; usuario1_id1[2]      ; conferirId[2]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.355 ns                ;
+; N/A                                     ; 403.39 MHz ( period = 2.479 ns )                    ; usuario1_id1[3]      ; conferirId[1]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.330 ns                ;
+; N/A                                     ; 422.65 MHz ( period = 2.366 ns )                    ; usuario1_id1[1]      ; conferirId[0]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.220 ns                ;
+; N/A                                     ; 423.55 MHz ( period = 2.361 ns )                    ; usuario1_id1[2]      ; conferirId[1]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.212 ns                ;
+; N/A                                     ; 445.63 MHz ( period = 2.244 ns )                    ; usuario1_id1[0]      ; conferirId[0]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.098 ns                ;
+; N/A                                     ; Restricted to 450.05 MHz ( period = 2.222 ns )      ; usuario1_id1[3]      ; conferirId[0]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 2.053 ns                ;
+; N/A                                     ; Restricted to 450.05 MHz ( period = 2.222 ns )      ; conferirId[1]        ; conferirId[2]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 1.928 ns                ;
+; N/A                                     ; Restricted to 450.05 MHz ( period = 2.222 ns )      ; conferirId[0]        ; conferirId[2]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 1.869 ns                ;
+; N/A                                     ; Restricted to 450.05 MHz ( period = 2.222 ns )      ; usuario1_id1[2]      ; conferirId[0]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 1.935 ns                ;
+; N/A                                     ; Restricted to 450.05 MHz ( period = 2.222 ns )      ; conferirId[1]        ; conferirId[1]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 1.785 ns                ;
+; N/A                                     ; Restricted to 450.05 MHz ( period = 2.222 ns )      ; conferirId[2]        ; conferirId[2]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 1.756 ns                ;
+; N/A                                     ; Restricted to 450.05 MHz ( period = 2.222 ns )      ; conferirId[0]        ; conferirId[1]   ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 1.726 ns                ;
+; N/A                                     ; Restricted to 450.05 MHz ( period = 2.222 ns )      ; usuariosNoSistema[0] ; usuario1_id1[1] ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 1.465 ns                ;
+; N/A                                     ; Restricted to 450.05 MHz ( period = 2.222 ns )      ; usuariosNoSistema[0] ; usuario1_id3[3] ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 1.464 ns                ;
+; N/A                                     ; Restricted to 450.05 MHz ( period = 2.222 ns )      ; usuariosNoSistema[0] ; usuario1_id1[3] ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 1.460 ns                ;
+; N/A                                     ; Restricted to 450.05 MHz ( period = 2.222 ns )      ; usuariosNoSistema[0] ; usuario1_id1[2] ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 1.460 ns                ;
+; N/A                                     ; Restricted to 450.05 MHz ( period = 2.222 ns )      ; usuariosNoSistema[0] ; usuario1_id1[0] ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 1.459 ns                ;
+; N/A                                     ; Restricted to 450.05 MHz ( period = 2.222 ns )      ; usuariosNoSistema[0] ; usuario1_id4[0] ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 1.476 ns                ;
+; N/A                                     ; Restricted to 450.05 MHz ( period = 2.222 ns )      ; usuariosNoSistema[0] ; usuario1_id4[1] ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 1.474 ns                ;
+; N/A                                     ; Restricted to 450.05 MHz ( period = 2.222 ns )      ; usuariosNoSistema[0] ; usuario1_id4[2] ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 1.473 ns                ;
+; N/A                                     ; Restricted to 450.05 MHz ( period = 2.222 ns )      ; usuariosNoSistema[0] ; usuario1_id4[3] ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 1.471 ns                ;
+; N/A                                     ; Restricted to 450.05 MHz ( period = 2.222 ns )      ; usuariosNoSistema[2] ; usuario1_id1[1] ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 1.285 ns                ;
+; N/A                                     ; Restricted to 450.05 MHz ( period = 2.222 ns )      ; usuariosNoSistema[2] ; usuario1_id3[3] ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 1.284 ns                ;
+; N/A                                     ; Restricted to 450.05 MHz ( period = 2.222 ns )      ; usuariosNoSistema[2] ; usuario1_id1[3] ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 1.280 ns                ;
+; N/A                                     ; Restricted to 450.05 MHz ( period = 2.222 ns )      ; usuariosNoSistema[2] ; usuario1_id1[2] ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 1.280 ns                ;
+; N/A                                     ; Restricted to 450.05 MHz ( period = 2.222 ns )      ; usuariosNoSistema[2] ; usuario1_id1[0] ; botaoConfirmar ; botaoConfirmar ; None                        ; None                      ; 1.279 ns                ;
+; Timing analysis restricted to 200 rows. ; To change the limit use Settings (Assignments menu) ;                      ;                 ;                ;                ;                             ;                           ;                         ;
++-----------------------------------------+-----------------------------------------------------+----------------------+-----------------+----------------+----------------+-----------------------------+---------------------------+-------------------------+
+
+
++--------------------------------------------------------------------------------------------------------+
+; tsu                                                                                                    ;
++-------+--------------+------------+--------------------+------------------------------------+----------+
+; Slack ; Required tsu ; Actual tsu ; From               ; To                                 ; To Clock ;
++-------+--------------+------------+--------------------+------------------------------------+----------+
+; N/A   ; None         ; 8.263 ns   ; controleSistema[3] ; estado_atual.apagarDisplay         ; clk_27   ;
+; N/A   ; None         ; 8.262 ns   ; controleSistema[3] ; estado_atual.confID                ; clk_27   ;
+; N/A   ; None         ; 8.261 ns   ; controleSistema[3] ; estado_atual.zerarApagarDisplay    ; clk_27   ;
+; N/A   ; None         ; 8.259 ns   ; controleSistema[3] ; estado_atual.digitarIdParaConferir ; clk_27   ;
+; N/A   ; None         ; 8.259 ns   ; controleSistema[3] ; estado_atual.registraID            ; clk_27   ;
+; N/A   ; None         ; 8.257 ns   ; controleSistema[3] ; estado_atual.cadastroID            ; clk_27   ;
+; N/A   ; None         ; 8.255 ns   ; controleSistema[3] ; estado_atual.registrarIdConferir   ; clk_27   ;
+; N/A   ; None         ; 8.046 ns   ; controleSistema[1] ; estado_atual.apagarDisplay         ; clk_27   ;
+; N/A   ; None         ; 8.045 ns   ; controleSistema[1] ; estado_atual.confID                ; clk_27   ;
+; N/A   ; None         ; 8.044 ns   ; controleSistema[1] ; estado_atual.zerarApagarDisplay    ; clk_27   ;
+; N/A   ; None         ; 8.042 ns   ; controleSistema[1] ; estado_atual.digitarIdParaConferir ; clk_27   ;
+; N/A   ; None         ; 8.042 ns   ; controleSistema[1] ; estado_atual.registraID            ; clk_27   ;
+; N/A   ; None         ; 8.040 ns   ; controleSistema[1] ; estado_atual.cadastroID            ; clk_27   ;
+; N/A   ; None         ; 8.038 ns   ; controleSistema[1] ; estado_atual.registrarIdConferir   ; clk_27   ;
+; N/A   ; None         ; 7.842 ns   ; controleSistema[0] ; estado_atual.apagarDisplay         ; clk_27   ;
+; N/A   ; None         ; 7.841 ns   ; controleSistema[0] ; estado_atual.confID                ; clk_27   ;
+; N/A   ; None         ; 7.840 ns   ; controleSistema[0] ; estado_atual.zerarApagarDisplay    ; clk_27   ;
+; N/A   ; None         ; 7.838 ns   ; controleSistema[0] ; estado_atual.digitarIdParaConferir ; clk_27   ;
+; N/A   ; None         ; 7.838 ns   ; controleSistema[0] ; estado_atual.registraID            ; clk_27   ;
+; N/A   ; None         ; 7.836 ns   ; controleSistema[0] ; estado_atual.cadastroID            ; clk_27   ;
+; N/A   ; None         ; 7.834 ns   ; controleSistema[0] ; estado_atual.registrarIdConferir   ; clk_27   ;
+; N/A   ; None         ; 7.304 ns   ; controleSistema[2] ; estado_atual.apagarDisplay         ; clk_27   ;
+; N/A   ; None         ; 7.303 ns   ; controleSistema[2] ; estado_atual.confID                ; clk_27   ;
+; N/A   ; None         ; 7.302 ns   ; controleSistema[2] ; estado_atual.zerarApagarDisplay    ; clk_27   ;
+; N/A   ; None         ; 7.300 ns   ; controleSistema[2] ; estado_atual.digitarIdParaConferir ; clk_27   ;
+; N/A   ; None         ; 7.300 ns   ; controleSistema[2] ; estado_atual.registraID            ; clk_27   ;
+; N/A   ; None         ; 7.298 ns   ; controleSistema[2] ; estado_atual.cadastroID            ; clk_27   ;
+; N/A   ; None         ; 7.296 ns   ; controleSistema[2] ; estado_atual.registrarIdConferir   ; clk_27   ;
+; N/A   ; None         ; 6.481 ns   ; controleSistema[3] ; estado_atual.0000                  ; clk_27   ;
+; N/A   ; None         ; 6.451 ns   ; controleSistema[0] ; estado_atual.0000                  ; clk_27   ;
+; N/A   ; None         ; 6.383 ns   ; controleSistema[1] ; estado_atual.0000                  ; clk_27   ;
+; N/A   ; None         ; 6.082 ns   ; controleSistema[2] ; estado_atual.0000                  ; clk_27   ;
++-------+--------------+------------+--------------------+------------------------------------+----------+
+
+
++----------------------------------------------------------------------------------------+
+; tco                                                                                    ;
++-------+--------------+------------+------------------+-------------+-------------------+
+; Slack ; Required tco ; Actual tco ; From             ; To          ; From Clock        ;
++-------+--------------+------------+------------------+-------------+-------------------+
+; N/A   ; None         ; 10.663 ns  ; display4[1]~reg0 ; display4[1] ; botaoPassarNumero ;
+; N/A   ; None         ; 10.634 ns  ; display4[4]~reg0 ; display4[4] ; botaoPassarNumero ;
+; N/A   ; None         ; 10.528 ns  ; display3[6]~reg0 ; display3[6] ; botaoPassarNumero ;
+; N/A   ; None         ; 10.144 ns  ; display4[2]~reg0 ; display4[2] ; botaoPassarNumero ;
+; N/A   ; None         ; 9.847 ns   ; display2[2]~reg0 ; display2[2] ; botaoPassarNumero ;
+; N/A   ; None         ; 9.736 ns   ; display4[6]~reg0 ; display4[6] ; botaoPassarNumero ;
+; N/A   ; None         ; 9.607 ns   ; display2[5]~reg0 ; display2[5] ; botaoPassarNumero ;
+; N/A   ; None         ; 9.572 ns   ; display1[6]~reg0 ; display1[6] ; botaoPassarNumero ;
+; N/A   ; None         ; 9.393 ns   ; display1[1]~reg0 ; display1[1] ; botaoPassarNumero ;
+; N/A   ; None         ; 9.325 ns   ; display2[0]~reg0 ; display2[0] ; botaoPassarNumero ;
+; N/A   ; None         ; 9.274 ns   ; display2[6]~reg0 ; display2[6] ; botaoPassarNumero ;
+; N/A   ; None         ; 9.131 ns   ; display3[5]~reg0 ; display3[5] ; botaoPassarNumero ;
+; N/A   ; None         ; 8.976 ns   ; display4[5]~reg0 ; display4[5] ; botaoPassarNumero ;
+; N/A   ; None         ; 8.884 ns   ; display2[4]~reg0 ; display2[4] ; botaoPassarNumero ;
+; N/A   ; None         ; 8.793 ns   ; display2[3]~reg0 ; display2[3] ; botaoPassarNumero ;
+; N/A   ; None         ; 8.680 ns   ; display3[2]~reg0 ; display3[2] ; botaoPassarNumero ;
+; N/A   ; None         ; 8.609 ns   ; display4[0]~reg0 ; display4[0] ; botaoPassarNumero ;
+; N/A   ; None         ; 8.593 ns   ; falhaID~reg0     ; falhaID     ; botaoConfirmar    ;
+; N/A   ; None         ; 8.580 ns   ; display2[1]~reg0 ; display2[1] ; botaoPassarNumero ;
+; N/A   ; None         ; 8.534 ns   ; display1[0]~reg0 ; display1[0] ; botaoPassarNumero ;
+; N/A   ; None         ; 8.499 ns   ; display4[3]~reg0 ; display4[3] ; botaoPassarNumero ;
+; N/A   ; None         ; 8.495 ns   ; display3[3]~reg0 ; display3[3] ; botaoPassarNumero ;
+; N/A   ; None         ; 8.382 ns   ; display3[0]~reg0 ; display3[0] ; botaoPassarNumero ;
+; N/A   ; None         ; 8.314 ns   ; display3[1]~reg0 ; display3[1] ; botaoPassarNumero ;
+; N/A   ; None         ; 8.294 ns   ; display3[4]~reg0 ; display3[4] ; botaoPassarNumero ;
+; N/A   ; None         ; 8.256 ns   ; aceitoID~reg0    ; aceitoID    ; botaoConfirmar    ;
+; N/A   ; None         ; 8.136 ns   ; display1[5]~reg0 ; display1[5] ; botaoPassarNumero ;
+; N/A   ; None         ; 8.014 ns   ; display1[2]~reg0 ; display1[2] ; botaoPassarNumero ;
+; N/A   ; None         ; 7.859 ns   ; display1[3]~reg0 ; display1[3] ; botaoPassarNumero ;
+; N/A   ; None         ; 7.840 ns   ; display1[4]~reg0 ; display1[4] ; botaoPassarNumero ;
++-------+--------------+------------+------------------+-------------+-------------------+
+
+
++--------------------------------------------------------------------------------------------------------------+
+; th                                                                                                           ;
++---------------+-------------+-----------+--------------------+------------------------------------+----------+
+; Minimum Slack ; Required th ; Actual th ; From               ; To                                 ; To Clock ;
++---------------+-------------+-----------+--------------------+------------------------------------+----------+
+; N/A           ; None        ; -5.375 ns ; controleSistema[2] ; estado_atual.0000                  ; clk_27   ;
+; N/A           ; None        ; -5.839 ns ; controleSistema[0] ; estado_atual.0000                  ; clk_27   ;
+; N/A           ; None        ; -5.995 ns ; controleSistema[1] ; estado_atual.0000                  ; clk_27   ;
+; N/A           ; None        ; -5.997 ns ; controleSistema[3] ; estado_atual.0000                  ; clk_27   ;
+; N/A           ; None        ; -6.082 ns ; controleSistema[2] ; estado_atual.confID                ; clk_27   ;
+; N/A           ; None        ; -6.083 ns ; controleSistema[2] ; estado_atual.apagarDisplay         ; clk_27   ;
+; N/A           ; None        ; -6.083 ns ; controleSistema[2] ; estado_atual.zerarApagarDisplay    ; clk_27   ;
+; N/A           ; None        ; -6.084 ns ; controleSistema[2] ; estado_atual.digitarIdParaConferir ; clk_27   ;
+; N/A           ; None        ; -6.084 ns ; controleSistema[2] ; estado_atual.registraID            ; clk_27   ;
+; N/A           ; None        ; -6.085 ns ; controleSistema[2] ; estado_atual.cadastroID            ; clk_27   ;
+; N/A           ; None        ; -6.089 ns ; controleSistema[2] ; estado_atual.registrarIdConferir   ; clk_27   ;
+; N/A           ; None        ; -6.227 ns ; controleSistema[3] ; estado_atual.confID                ; clk_27   ;
+; N/A           ; None        ; -6.228 ns ; controleSistema[3] ; estado_atual.apagarDisplay         ; clk_27   ;
+; N/A           ; None        ; -6.228 ns ; controleSistema[3] ; estado_atual.zerarApagarDisplay    ; clk_27   ;
+; N/A           ; None        ; -6.229 ns ; controleSistema[3] ; estado_atual.digitarIdParaConferir ; clk_27   ;
+; N/A           ; None        ; -6.229 ns ; controleSistema[3] ; estado_atual.registraID            ; clk_27   ;
+; N/A           ; None        ; -6.230 ns ; controleSistema[3] ; estado_atual.cadastroID            ; clk_27   ;
+; N/A           ; None        ; -6.234 ns ; controleSistema[3] ; estado_atual.registrarIdConferir   ; clk_27   ;
+; N/A           ; None        ; -6.383 ns ; controleSistema[1] ; estado_atual.confID                ; clk_27   ;
+; N/A           ; None        ; -6.384 ns ; controleSistema[1] ; estado_atual.apagarDisplay         ; clk_27   ;
+; N/A           ; None        ; -6.384 ns ; controleSistema[1] ; estado_atual.zerarApagarDisplay    ; clk_27   ;
+; N/A           ; None        ; -6.385 ns ; controleSistema[1] ; estado_atual.digitarIdParaConferir ; clk_27   ;
+; N/A           ; None        ; -6.385 ns ; controleSistema[1] ; estado_atual.registraID            ; clk_27   ;
+; N/A           ; None        ; -6.386 ns ; controleSistema[1] ; estado_atual.cadastroID            ; clk_27   ;
+; N/A           ; None        ; -6.390 ns ; controleSistema[1] ; estado_atual.registrarIdConferir   ; clk_27   ;
+; N/A           ; None        ; -6.451 ns ; controleSistema[0] ; estado_atual.confID                ; clk_27   ;
+; N/A           ; None        ; -6.452 ns ; controleSistema[0] ; estado_atual.apagarDisplay         ; clk_27   ;
+; N/A           ; None        ; -6.452 ns ; controleSistema[0] ; estado_atual.zerarApagarDisplay    ; clk_27   ;
+; N/A           ; None        ; -6.453 ns ; controleSistema[0] ; estado_atual.digitarIdParaConferir ; clk_27   ;
+; N/A           ; None        ; -6.453 ns ; controleSistema[0] ; estado_atual.registraID            ; clk_27   ;
+; N/A           ; None        ; -6.454 ns ; controleSistema[0] ; estado_atual.cadastroID            ; clk_27   ;
+; N/A           ; None        ; -6.458 ns ; controleSistema[0] ; estado_atual.registrarIdConferir   ; clk_27   ;
++---------------+-------------+-----------+--------------------+------------------------------------+----------+
+
+
++--------------------------+
+; Timing Analyzer Messages ;
++--------------------------+
+Info: *******************************************************************
+Info: Running Quartus II Classic Timing Analyzer
+    Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+    Info: Processing started: Tue Oct 16 15:10:57 2018
+Info: Command: quartus_tan --read_settings_files=off --write_settings_files=off cofre -c cofre --timing_analysis_only
+Warning: Found pins functioning as undefined clocks and/or memory enables
+    Info: Assuming node "botaoPassarNumero" is an undefined clock
+    Info: Assuming node "clk_27" is an undefined clock
+    Info: Assuming node "botaoPassarDisplay" is an undefined clock
+    Info: Assuming node "botaoConfirmar" is an undefined clock
+Info: Clock "botaoPassarNumero" Internal fmax is restricted to 450.05 MHz between source register "contadorDisplay1[3]" and destination register "display1[1]~reg0"
+    Info: fmax restricted to clock pin edge rate 2.222 ns. Expand message to see actual delay path.
+        Info: + Longest register to register delay is 1.792 ns
+            Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LCFF_X58_Y24_N15; Fanout = 12; REG Node = 'contadorDisplay1[3]'
+            Info: 2: + IC(0.768 ns) + CELL(0.410 ns) = 1.178 ns; Loc. = LCCOMB_X57_Y24_N8; Fanout = 1; COMB Node = 'Mux5~0'
+            Info: 3: + IC(0.255 ns) + CELL(0.275 ns) = 1.708 ns; Loc. = LCCOMB_X57_Y24_N2; Fanout = 1; COMB Node = 'display1~5'
+            Info: 4: + IC(0.000 ns) + CELL(0.084 ns) = 1.792 ns; Loc. = LCFF_X57_Y24_N3; Fanout = 1; REG Node = 'display1[1]~reg0'
+            Info: Total cell delay = 0.769 ns ( 42.91 % )
+            Info: Total interconnect delay = 1.023 ns ( 57.09 % )
+        Info: - Smallest clock skew is -0.001 ns
+            Info: + Shortest clock path from clock "botaoPassarNumero" to destination register is 2.577 ns
+                Info: 1: + IC(0.000 ns) + CELL(0.842 ns) = 0.842 ns; Loc. = PIN_N23; Fanout = 1; CLK Node = 'botaoPassarNumero'
+                Info: 2: + IC(0.041 ns) + CELL(0.155 ns) = 1.038 ns; Loc. = CLKDELAYCTRL_G4; Fanout = 1; COMB Node = 'botaoPassarNumero~clk_delay_ctrl'
+                Info: 3: + IC(0.000 ns) + CELL(0.000 ns) = 1.038 ns; Loc. = CLKCTRL_G4; Fanout = 44; COMB Node = 'botaoPassarNumero~clkctrl'
+                Info: 4: + IC(1.002 ns) + CELL(0.537 ns) = 2.577 ns; Loc. = LCFF_X57_Y24_N3; Fanout = 1; REG Node = 'display1[1]~reg0'
+                Info: Total cell delay = 1.534 ns ( 59.53 % )
+                Info: Total interconnect delay = 1.043 ns ( 40.47 % )
+            Info: - Longest clock path from clock "botaoPassarNumero" to source register is 2.578 ns
+                Info: 1: + IC(0.000 ns) + CELL(0.842 ns) = 0.842 ns; Loc. = PIN_N23; Fanout = 1; CLK Node = 'botaoPassarNumero'
+                Info: 2: + IC(0.041 ns) + CELL(0.155 ns) = 1.038 ns; Loc. = CLKDELAYCTRL_G4; Fanout = 1; COMB Node = 'botaoPassarNumero~clk_delay_ctrl'
+                Info: 3: + IC(0.000 ns) + CELL(0.000 ns) = 1.038 ns; Loc. = CLKCTRL_G4; Fanout = 44; COMB Node = 'botaoPassarNumero~clkctrl'
+                Info: 4: + IC(1.003 ns) + CELL(0.537 ns) = 2.578 ns; Loc. = LCFF_X58_Y24_N15; Fanout = 12; REG Node = 'contadorDisplay1[3]'
+                Info: Total cell delay = 1.534 ns ( 59.50 % )
+                Info: Total interconnect delay = 1.044 ns ( 40.50 % )
+        Info: + Micro clock to output delay of source is 0.250 ns
+        Info: + Micro setup delay of destination is -0.036 ns
+Info: Clock "clk_27" has Internal fmax of 380.37 MHz between source register "estado_atual.digitarIdParaConferir" and destination register "estado_atual.apagarDisplay" (period= 2.629 ns)
+    Info: + Longest register to register delay is 2.415 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LCFF_X62_Y25_N13; Fanout = 5; REG Node = 'estado_atual.digitarIdParaConferir'
+        Info: 2: + IC(0.336 ns) + CELL(0.150 ns) = 0.486 ns; Loc. = LCCOMB_X62_Y25_N4; Fanout = 2; COMB Node = 'Selector4~7'
+        Info: 3: + IC(0.458 ns) + CELL(0.438 ns) = 1.382 ns; Loc. = LCCOMB_X62_Y25_N16; Fanout = 1; COMB Node = 'Selector4~9'
+        Info: 4: + IC(0.263 ns) + CELL(0.242 ns) = 1.887 ns; Loc. = LCCOMB_X62_Y25_N6; Fanout = 7; COMB Node = 'Selector4~12'
+        Info: 5: + IC(0.294 ns) + CELL(0.150 ns) = 2.331 ns; Loc. = LCCOMB_X62_Y25_N24; Fanout = 1; COMB Node = 'Selector4~14'
+        Info: 6: + IC(0.000 ns) + CELL(0.084 ns) = 2.415 ns; Loc. = LCFF_X62_Y25_N25; Fanout = 28; REG Node = 'estado_atual.apagarDisplay'
+        Info: Total cell delay = 1.064 ns ( 44.06 % )
+        Info: Total interconnect delay = 1.351 ns ( 55.94 % )
+    Info: - Smallest clock skew is 0.000 ns
+        Info: + Shortest clock path from clock "clk_27" to destination register is 2.633 ns
+            Info: 1: + IC(0.000 ns) + CELL(0.979 ns) = 0.979 ns; Loc. = PIN_D13; Fanout = 1; CLK Node = 'clk_27'
+            Info: 2: + IC(0.113 ns) + CELL(0.000 ns) = 1.092 ns; Loc. = CLKCTRL_G11; Fanout = 8; COMB Node = 'clk_27~clkctrl'
+            Info: 3: + IC(1.004 ns) + CELL(0.537 ns) = 2.633 ns; Loc. = LCFF_X62_Y25_N25; Fanout = 28; REG Node = 'estado_atual.apagarDisplay'
+            Info: Total cell delay = 1.516 ns ( 57.58 % )
+            Info: Total interconnect delay = 1.117 ns ( 42.42 % )
+        Info: - Longest clock path from clock "clk_27" to source register is 2.633 ns
+            Info: 1: + IC(0.000 ns) + CELL(0.979 ns) = 0.979 ns; Loc. = PIN_D13; Fanout = 1; CLK Node = 'clk_27'
+            Info: 2: + IC(0.113 ns) + CELL(0.000 ns) = 1.092 ns; Loc. = CLKCTRL_G11; Fanout = 8; COMB Node = 'clk_27~clkctrl'
+            Info: 3: + IC(1.004 ns) + CELL(0.537 ns) = 2.633 ns; Loc. = LCFF_X62_Y25_N13; Fanout = 5; REG Node = 'estado_atual.digitarIdParaConferir'
+            Info: Total cell delay = 1.516 ns ( 57.58 % )
+            Info: Total interconnect delay = 1.117 ns ( 42.42 % )
+    Info: + Micro clock to output delay of source is 0.250 ns
+    Info: + Micro setup delay of destination is -0.036 ns
+Info: Clock "botaoPassarDisplay" has Internal fmax of 419.64 MHz between source register "displaySelecionado[1]" and destination register "displaySelecionado[1]" (period= 2.383 ns)
+    Info: + Longest register to register delay is 2.169 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LCFF_X57_Y23_N1; Fanout = 31; REG Node = 'displaySelecionado[1]'
+        Info: 2: + IC(0.348 ns) + CELL(0.389 ns) = 0.737 ns; Loc. = LCCOMB_X57_Y23_N14; Fanout = 2; COMB Node = 'Add4~0'
+        Info: 3: + IC(0.262 ns) + CELL(0.275 ns) = 1.274 ns; Loc. = LCCOMB_X57_Y23_N10; Fanout = 3; COMB Node = 'displaySelecionado~4'
+        Info: 4: + IC(0.258 ns) + CELL(0.150 ns) = 1.682 ns; Loc. = LCCOMB_X57_Y23_N28; Fanout = 1; COMB Node = 'displaySelecionado~5'
+        Info: 5: + IC(0.253 ns) + CELL(0.150 ns) = 2.085 ns; Loc. = LCCOMB_X57_Y23_N0; Fanout = 1; COMB Node = 'displaySelecionado~6'
+        Info: 6: + IC(0.000 ns) + CELL(0.084 ns) = 2.169 ns; Loc. = LCFF_X57_Y23_N1; Fanout = 31; REG Node = 'displaySelecionado[1]'
+        Info: Total cell delay = 1.048 ns ( 48.32 % )
+        Info: Total interconnect delay = 1.121 ns ( 51.68 % )
+    Info: - Smallest clock skew is 0.000 ns
+        Info: + Shortest clock path from clock "botaoPassarDisplay" to destination register is 2.588 ns
+            Info: 1: + IC(0.000 ns) + CELL(0.842 ns) = 0.842 ns; Loc. = PIN_P23; Fanout = 1; CLK Node = 'botaoPassarDisplay'
+            Info: 2: + IC(0.045 ns) + CELL(0.155 ns) = 1.042 ns; Loc. = CLKDELAYCTRL_G5; Fanout = 1; COMB Node = 'botaoPassarDisplay~clk_delay_ctrl'
+            Info: 3: + IC(0.000 ns) + CELL(0.000 ns) = 1.042 ns; Loc. = CLKCTRL_G5; Fanout = 4; COMB Node = 'botaoPassarDisplay~clkctrl'
+            Info: 4: + IC(1.009 ns) + CELL(0.537 ns) = 2.588 ns; Loc. = LCFF_X57_Y23_N1; Fanout = 31; REG Node = 'displaySelecionado[1]'
+            Info: Total cell delay = 1.534 ns ( 59.27 % )
+            Info: Total interconnect delay = 1.054 ns ( 40.73 % )
+        Info: - Longest clock path from clock "botaoPassarDisplay" to source register is 2.588 ns
+            Info: 1: + IC(0.000 ns) + CELL(0.842 ns) = 0.842 ns; Loc. = PIN_P23; Fanout = 1; CLK Node = 'botaoPassarDisplay'
+            Info: 2: + IC(0.045 ns) + CELL(0.155 ns) = 1.042 ns; Loc. = CLKDELAYCTRL_G5; Fanout = 1; COMB Node = 'botaoPassarDisplay~clk_delay_ctrl'
+            Info: 3: + IC(0.000 ns) + CELL(0.000 ns) = 1.042 ns; Loc. = CLKCTRL_G5; Fanout = 4; COMB Node = 'botaoPassarDisplay~clkctrl'
+            Info: 4: + IC(1.009 ns) + CELL(0.537 ns) = 2.588 ns; Loc. = LCFF_X57_Y23_N1; Fanout = 31; REG Node = 'displaySelecionado[1]'
+            Info: Total cell delay = 1.534 ns ( 59.27 % )
+            Info: Total interconnect delay = 1.054 ns ( 40.73 % )
+    Info: + Micro clock to output delay of source is 0.250 ns
+    Info: + Micro setup delay of destination is -0.036 ns
+Info: Clock "botaoConfirmar" has Internal fmax of 199.16 MHz between source register "usuariosNoSistema[0]" and destination register "falhaID~reg0" (period= 5.021 ns)
+    Info: + Longest register to register delay is 4.795 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LCFF_X59_Y25_N29; Fanout = 4; REG Node = 'usuariosNoSistema[0]'
+        Info: 2: + IC(0.314 ns) + CELL(0.420 ns) = 0.734 ns; Loc. = LCCOMB_X59_Y25_N22; Fanout = 20; COMB Node = 'usuario1_id1~0'
+        Info: 3: + IC(0.306 ns) + CELL(0.150 ns) = 1.190 ns; Loc. = LCCOMB_X59_Y25_N0; Fanout = 2; COMB Node = 'usuario1_id3~2'
+        Info: 4: + IC(0.441 ns) + CELL(0.275 ns) = 1.906 ns; Loc. = LCCOMB_X60_Y25_N28; Fanout = 2; COMB Node = 'Equal16~1'
+        Info: 5: + IC(0.760 ns) + CELL(0.410 ns) = 3.076 ns; Loc. = LCCOMB_X59_Y25_N30; Fanout = 2; COMB Node = 'Add7~1'
+        Info: 6: + IC(0.427 ns) + CELL(0.438 ns) = 3.941 ns; Loc. = LCCOMB_X60_Y25_N20; Fanout = 3; COMB Node = 'Add8~4'
+        Info: 7: + IC(0.495 ns) + CELL(0.275 ns) = 4.711 ns; Loc. = LCCOMB_X61_Y25_N26; Fanout = 1; COMB Node = 'falhaID~1'
+        Info: 8: + IC(0.000 ns) + CELL(0.084 ns) = 4.795 ns; Loc. = LCFF_X61_Y25_N27; Fanout = 1; REG Node = 'falhaID~reg0'
+        Info: Total cell delay = 2.052 ns ( 42.79 % )
+        Info: Total interconnect delay = 2.743 ns ( 57.21 % )
+    Info: - Smallest clock skew is -0.012 ns
+        Info: + Shortest clock path from clock "botaoConfirmar" to destination register is 2.702 ns
+            Info: 1: + IC(0.000 ns) + CELL(0.862 ns) = 0.862 ns; Loc. = PIN_G26; Fanout = 40; CLK Node = 'botaoConfirmar'
+            Info: 2: + IC(1.303 ns) + CELL(0.537 ns) = 2.702 ns; Loc. = LCFF_X61_Y25_N27; Fanout = 1; REG Node = 'falhaID~reg0'
+            Info: Total cell delay = 1.399 ns ( 51.78 % )
+            Info: Total interconnect delay = 1.303 ns ( 48.22 % )
+        Info: - Longest clock path from clock "botaoConfirmar" to source register is 2.714 ns
+            Info: 1: + IC(0.000 ns) + CELL(0.862 ns) = 0.862 ns; Loc. = PIN_G26; Fanout = 40; CLK Node = 'botaoConfirmar'
+            Info: 2: + IC(1.315 ns) + CELL(0.537 ns) = 2.714 ns; Loc. = LCFF_X59_Y25_N29; Fanout = 4; REG Node = 'usuariosNoSistema[0]'
+            Info: Total cell delay = 1.399 ns ( 51.55 % )
+            Info: Total interconnect delay = 1.315 ns ( 48.45 % )
+    Info: + Micro clock to output delay of source is 0.250 ns
+    Info: + Micro setup delay of destination is -0.036 ns
+Info: tsu for register "estado_atual.apagarDisplay" (data pin = "controleSistema[3]", clock pin = "clk_27") is 8.263 ns
+    Info: + Longest pin to register delay is 10.932 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.852 ns) = 0.852 ns; Loc. = PIN_V2; Fanout = 5; PIN Node = 'controleSistema[3]'
+        Info: 2: + IC(6.904 ns) + CELL(0.398 ns) = 8.154 ns; Loc. = LCCOMB_X61_Y25_N18; Fanout = 2; COMB Node = 'Selector4~6'
+        Info: 3: + IC(0.456 ns) + CELL(0.393 ns) = 9.003 ns; Loc. = LCCOMB_X62_Y25_N4; Fanout = 2; COMB Node = 'Selector4~7'
+        Info: 4: + IC(0.458 ns) + CELL(0.438 ns) = 9.899 ns; Loc. = LCCOMB_X62_Y25_N16; Fanout = 1; COMB Node = 'Selector4~9'
+        Info: 5: + IC(0.263 ns) + CELL(0.242 ns) = 10.404 ns; Loc. = LCCOMB_X62_Y25_N6; Fanout = 7; COMB Node = 'Selector4~12'
+        Info: 6: + IC(0.294 ns) + CELL(0.150 ns) = 10.848 ns; Loc. = LCCOMB_X62_Y25_N24; Fanout = 1; COMB Node = 'Selector4~14'
+        Info: 7: + IC(0.000 ns) + CELL(0.084 ns) = 10.932 ns; Loc. = LCFF_X62_Y25_N25; Fanout = 28; REG Node = 'estado_atual.apagarDisplay'
+        Info: Total cell delay = 2.557 ns ( 23.39 % )
+        Info: Total interconnect delay = 8.375 ns ( 76.61 % )
+    Info: + Micro setup delay of destination is -0.036 ns
+    Info: - Shortest clock path from clock "clk_27" to destination register is 2.633 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.979 ns) = 0.979 ns; Loc. = PIN_D13; Fanout = 1; CLK Node = 'clk_27'
+        Info: 2: + IC(0.113 ns) + CELL(0.000 ns) = 1.092 ns; Loc. = CLKCTRL_G11; Fanout = 8; COMB Node = 'clk_27~clkctrl'
+        Info: 3: + IC(1.004 ns) + CELL(0.537 ns) = 2.633 ns; Loc. = LCFF_X62_Y25_N25; Fanout = 28; REG Node = 'estado_atual.apagarDisplay'
+        Info: Total cell delay = 1.516 ns ( 57.58 % )
+        Info: Total interconnect delay = 1.117 ns ( 42.42 % )
+Info: tco from clock "botaoPassarNumero" to destination pin "display4[1]" through register "display4[1]~reg0" is 10.663 ns
+    Info: + Longest clock path from clock "botaoPassarNumero" to source register is 2.584 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.842 ns) = 0.842 ns; Loc. = PIN_N23; Fanout = 1; CLK Node = 'botaoPassarNumero'
+        Info: 2: + IC(0.041 ns) + CELL(0.155 ns) = 1.038 ns; Loc. = CLKDELAYCTRL_G4; Fanout = 1; COMB Node = 'botaoPassarNumero~clk_delay_ctrl'
+        Info: 3: + IC(0.000 ns) + CELL(0.000 ns) = 1.038 ns; Loc. = CLKCTRL_G4; Fanout = 44; COMB Node = 'botaoPassarNumero~clkctrl'
+        Info: 4: + IC(1.009 ns) + CELL(0.537 ns) = 2.584 ns; Loc. = LCFF_X59_Y23_N9; Fanout = 1; REG Node = 'display4[1]~reg0'
+        Info: Total cell delay = 1.534 ns ( 59.37 % )
+        Info: Total interconnect delay = 1.050 ns ( 40.63 % )
+    Info: + Micro clock to output delay of source is 0.250 ns
+    Info: + Longest register to pin delay is 7.829 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LCFF_X59_Y23_N9; Fanout = 1; REG Node = 'display4[1]~reg0'
+        Info: 2: + IC(5.187 ns) + CELL(2.642 ns) = 7.829 ns; Loc. = PIN_U1; Fanout = 0; PIN Node = 'display4[1]'
+        Info: Total cell delay = 2.642 ns ( 33.75 % )
+        Info: Total interconnect delay = 5.187 ns ( 66.25 % )
+Info: th for register "estado_atual.0000" (data pin = "controleSistema[2]", clock pin = "clk_27") is -5.375 ns
+    Info: + Longest clock path from clock "clk_27" to destination register is 2.633 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.979 ns) = 0.979 ns; Loc. = PIN_D13; Fanout = 1; CLK Node = 'clk_27'
+        Info: 2: + IC(0.113 ns) + CELL(0.000 ns) = 1.092 ns; Loc. = CLKCTRL_G11; Fanout = 8; COMB Node = 'clk_27~clkctrl'
+        Info: 3: + IC(1.004 ns) + CELL(0.537 ns) = 2.633 ns; Loc. = LCFF_X62_Y25_N19; Fanout = 5; REG Node = 'estado_atual.0000'
+        Info: Total cell delay = 1.516 ns ( 57.58 % )
+        Info: Total interconnect delay = 1.117 ns ( 42.42 % )
+    Info: + Micro hold delay of destination is 0.266 ns
+    Info: - Shortest pin to register delay is 8.274 ns
+        Info: 1: + IC(0.000 ns) + CELL(0.852 ns) = 0.852 ns; Loc. = PIN_V1; Fanout = 9; PIN Node = 'controleSistema[2]'
+        Info: 2: + IC(6.919 ns) + CELL(0.419 ns) = 8.190 ns; Loc. = LCCOMB_X62_Y25_N18; Fanout = 1; COMB Node = 'Selector0~0'
+        Info: 3: + IC(0.000 ns) + CELL(0.084 ns) = 8.274 ns; Loc. = LCFF_X62_Y25_N19; Fanout = 5; REG Node = 'estado_atual.0000'
+        Info: Total cell delay = 1.355 ns ( 16.38 % )
+        Info: Total interconnect delay = 6.919 ns ( 83.62 % )
+Info: Quartus II Classic Timing Analyzer was successful. 0 errors, 1 warning
+    Info: Peak virtual memory: 169 megabytes
+    Info: Processing ended: Tue Oct 16 15:10:57 2018
+    Info: Elapsed time: 00:00:00
+    Info: Total CPU time (on all processors): 00:00:00
+
+

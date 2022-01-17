@@ -1,0 +1,411 @@
+Analysis & Synthesis report for cofre
+Tue Oct 16 22:36:02 2018
+Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |cofre|estado_anterior
+  9. State Machine - |cofre|estado_atual
+ 10. Registers Removed During Synthesis
+ 11. Removed Registers Triggering Further Register Optimizations
+ 12. General Register Statistics
+ 13. Inverted Register Statistics
+ 14. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 15. Parameter Settings for User Entity Instance: Top-level Entity: |cofre
+ 16. Elapsed Time Per Partition
+ 17. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++--------------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                         ;
++------------------------------------+-------------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Tue Oct 16 22:36:02 2018           ;
+; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
+; Revision Name                      ; cofre                                           ;
+; Top-level Entity Name              ; cofre                                           ;
+; Family                             ; Cyclone II                                      ;
+; Total logic elements               ; 267                                             ;
+;     Total combinational functions  ; 266                                             ;
+;     Dedicated logic registers      ; 117                                             ;
+; Total registers                    ; 117                                             ;
+; Total pins                         ; 38                                              ;
+; Total virtual pins                 ; 0                                               ;
+; Total memory bits                  ; 0                                               ;
+; Embedded Multiplier 9-bit elements ; 0                                               ;
+; Total PLLs                         ; 0                                               ;
++------------------------------------+-------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                     ; EP2C35F672C6       ;                    ;
+; Top-level entity name                                                      ; cofre              ; cofre              ;
+; Family name                                                                ; Cyclone II         ; Cyclone IV GX      ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; Off                ; Off                ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
+; Synthesis Seed                                                             ; 1                  ; 1                  ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 4      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                  ;
++----------------------------------+-----------------+------------------------+-------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                    ; Library ;
++----------------------------------+-----------------+------------------------+-------------------------------------------------+---------+
+; cofre.v                          ; yes             ; User Verilog HDL File  ; C:/Users/Denis/Downloads/novoprojetoCL2/cofre.v ;         ;
++----------------------------------+-----------------+------------------------+-------------------------------------------------+---------+
+
+
++--------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                  ;
++---------------------------------------------+----------------+
+; Resource                                    ; Usage          ;
++---------------------------------------------+----------------+
+; Estimated Total logic elements              ; 267            ;
+;                                             ;                ;
+; Total combinational functions               ; 266            ;
+; Logic element usage by number of LUT inputs ;                ;
+;     -- 4 input functions                    ; 158            ;
+;     -- 3 input functions                    ; 87             ;
+;     -- <=2 input functions                  ; 21             ;
+;                                             ;                ;
+; Logic elements by mode                      ;                ;
+;     -- normal mode                          ; 266            ;
+;     -- arithmetic mode                      ; 0              ;
+;                                             ;                ;
+; Total registers                             ; 117            ;
+;     -- Dedicated logic registers            ; 117            ;
+;     -- I/O registers                        ; 0              ;
+;                                             ;                ;
+; I/O pins                                    ; 38             ;
+; Embedded Multiplier 9-bit elements          ; 0              ;
+; Maximum fan-out node                        ; botaoConfirmar ;
+; Maximum fan-out                             ; 57             ;
+; Total fan-out                               ; 1250           ;
+; Average fan-out                             ; 2.97           ;
++---------------------------------------------+----------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                         ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
+; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Library Name ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
+; |cofre                     ; 266 (266)         ; 117 (117)    ; 0           ; 0            ; 0       ; 0         ; 38   ; 0            ; |cofre              ; work         ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------------------------------------------------------+
+; State Machine - |cofre|estado_anterior                                                                            ;
++-------------------------------+----------------------------+-------------------------------+----------------------+
+; Name                          ; estado_anterior.registraID ; estado_anterior.registraSenha ; estado_anterior.0000 ;
++-------------------------------+----------------------------+-------------------------------+----------------------+
+; estado_anterior.0000          ; 0                          ; 0                             ; 0                    ;
+; estado_anterior.registraID    ; 1                          ; 0                             ; 1                    ;
+; estado_anterior.registraSenha ; 0                          ; 1                             ; 1                    ;
++-------------------------------+----------------------------+-------------------------------+----------------------+
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |cofre|estado_atual                                                                                                                                                                                                                                                                                                                                                                               ;
++---------------------------------------+---------------------+------------------------------------+---------------------------------------+----------------------------------+------------------------------------+----------------------------+----------------------------+----------------------------+---------------------------------+-------------------------+-------------------------+-------------------+
+; Name                                  ; estado_atual.confID ; estado_atual.registraSenhaConferir ; estado_atual.digitarSenhaParaConferir ; estado_atual.registrarIdConferir ; estado_atual.digitarIdParaConferir ; estado_atual.registraSenha ; estado_atual.cadastroSenha ; estado_atual.apagarDisplay ; estado_atual.zerarApagarDisplay ; estado_atual.registraID ; estado_atual.cadastroID ; estado_atual.0000 ;
++---------------------------------------+---------------------+------------------------------------+---------------------------------------+----------------------------------+------------------------------------+----------------------------+----------------------------+----------------------------+---------------------------------+-------------------------+-------------------------+-------------------+
+; estado_atual.0000                     ; 0                   ; 0                                  ; 0                                     ; 0                                ; 0                                  ; 0                          ; 0                          ; 0                          ; 0                               ; 0                       ; 0                       ; 0                 ;
+; estado_atual.cadastroID               ; 0                   ; 0                                  ; 0                                     ; 0                                ; 0                                  ; 0                          ; 0                          ; 0                          ; 0                               ; 0                       ; 1                       ; 1                 ;
+; estado_atual.registraID               ; 0                   ; 0                                  ; 0                                     ; 0                                ; 0                                  ; 0                          ; 0                          ; 0                          ; 0                               ; 1                       ; 0                       ; 1                 ;
+; estado_atual.zerarApagarDisplay       ; 0                   ; 0                                  ; 0                                     ; 0                                ; 0                                  ; 0                          ; 0                          ; 0                          ; 1                               ; 0                       ; 0                       ; 1                 ;
+; estado_atual.apagarDisplay            ; 0                   ; 0                                  ; 0                                     ; 0                                ; 0                                  ; 0                          ; 0                          ; 1                          ; 0                               ; 0                       ; 0                       ; 1                 ;
+; estado_atual.cadastroSenha            ; 0                   ; 0                                  ; 0                                     ; 0                                ; 0                                  ; 0                          ; 1                          ; 0                          ; 0                               ; 0                       ; 0                       ; 1                 ;
+; estado_atual.registraSenha            ; 0                   ; 0                                  ; 0                                     ; 0                                ; 0                                  ; 1                          ; 0                          ; 0                          ; 0                               ; 0                       ; 0                       ; 1                 ;
+; estado_atual.digitarIdParaConferir    ; 0                   ; 0                                  ; 0                                     ; 0                                ; 1                                  ; 0                          ; 0                          ; 0                          ; 0                               ; 0                       ; 0                       ; 1                 ;
+; estado_atual.registrarIdConferir      ; 0                   ; 0                                  ; 0                                     ; 1                                ; 0                                  ; 0                          ; 0                          ; 0                          ; 0                               ; 0                       ; 0                       ; 1                 ;
+; estado_atual.digitarSenhaParaConferir ; 0                   ; 0                                  ; 1                                     ; 0                                ; 0                                  ; 0                          ; 0                          ; 0                          ; 0                               ; 0                       ; 0                       ; 1                 ;
+; estado_atual.registraSenhaConferir    ; 0                   ; 1                                  ; 0                                     ; 0                                ; 0                                  ; 0                          ; 0                          ; 0                          ; 0                               ; 0                       ; 0                       ; 1                 ;
+; estado_atual.confID                   ; 1                   ; 0                                  ; 0                                     ; 0                                ; 0                                  ; 0                          ; 0                          ; 0                          ; 0                               ; 0                       ; 0                       ; 1                 ;
++---------------------------------------+---------------------+------------------------------------+---------------------------------------+----------------------------------+------------------------------------+----------------------------+----------------------------+----------------------------+---------------------------------+-------------------------+-------------------------+-------------------+
+
+
++--------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                         ;
++----------------------------------------+---------------------------------------------------+
+; Register name                          ; Reason for Removal                                ;
++----------------------------------------+---------------------------------------------------+
+; estado_anterior~5                      ; Lost fanout                                       ;
+; estado_anterior~8                      ; Lost fanout                                       ;
+; estado_atual~14                        ; Lost fanout                                       ;
+; estado_atual~15                        ; Lost fanout                                       ;
+; estado_atual~16                        ; Lost fanout                                       ;
+; estado_atual~17                        ; Lost fanout                                       ;
+; estado_anterior.registraID             ; Lost fanout                                       ;
+; estado_atual.registraSenhaConferir     ; Merged with estado_atual.digitarSenhaParaConferir ;
+; estado_atual.digitarSenhaParaConferir  ; Stuck at GND due to stuck port data_in            ;
+; auxSnConferir3[0..3]                   ; Stuck at GND due to stuck port data_in            ;
+; auxSnConferir2[0..3]                   ; Stuck at GND due to stuck port data_in            ;
+; auxSnConferir1[0..3]                   ; Stuck at GND due to stuck port data_in            ;
+; auxSnConferir4[0..3]                   ; Stuck at GND due to stuck port data_in            ;
+; Total Number of Removed Registers = 25 ;                                                   ;
++----------------------------------------+---------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                     ;
++---------------------------------------+---------------------------+-----------------------------------------------------------------------------+
+; Register name                         ; Reason for Removal        ; Registers Removed due to This Register                                      ;
++---------------------------------------+---------------------------+-----------------------------------------------------------------------------+
+; estado_atual.digitarSenhaParaConferir ; Stuck at GND              ; auxSnConferir3[3], auxSnConferir3[2], auxSnConferir3[1], auxSnConferir3[0], ;
+;                                       ; due to stuck port data_in ; auxSnConferir2[3], auxSnConferir2[2], auxSnConferir2[1], auxSnConferir2[0], ;
+;                                       ;                           ; auxSnConferir1[3], auxSnConferir4[3]                                        ;
++---------------------------------------+---------------------------+-----------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 117   ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 52    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++---------------------------------------------------+
+; Inverted Register Statistics                      ;
++-----------------------------------------+---------+
+; Inverted Register                       ; Fan out ;
++-----------------------------------------+---------+
+; display1[0]~reg0                        ; 1       ;
+; display1[1]~reg0                        ; 1       ;
+; display1[2]~reg0                        ; 1       ;
+; display1[3]~reg0                        ; 1       ;
+; display1[4]~reg0                        ; 1       ;
+; display1[5]~reg0                        ; 1       ;
+; display1[6]~reg0                        ; 1       ;
+; display2[0]~reg0                        ; 1       ;
+; display2[1]~reg0                        ; 1       ;
+; display2[2]~reg0                        ; 1       ;
+; display2[3]~reg0                        ; 1       ;
+; display2[4]~reg0                        ; 1       ;
+; display2[5]~reg0                        ; 1       ;
+; display2[6]~reg0                        ; 1       ;
+; display3[0]~reg0                        ; 1       ;
+; display3[1]~reg0                        ; 1       ;
+; display3[2]~reg0                        ; 1       ;
+; display3[3]~reg0                        ; 1       ;
+; display3[4]~reg0                        ; 1       ;
+; display3[5]~reg0                        ; 1       ;
+; display3[6]~reg0                        ; 1       ;
+; display4[0]~reg0                        ; 1       ;
+; display4[1]~reg0                        ; 1       ;
+; display4[2]~reg0                        ; 1       ;
+; display4[3]~reg0                        ; 1       ;
+; display4[4]~reg0                        ; 1       ;
+; display4[5]~reg0                        ; 1       ;
+; display4[6]~reg0                        ; 1       ;
+; Total number of inverted registers = 28 ;         ;
++-----------------------------------------+---------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                             ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output   ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------+
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |cofre|aceitoID~reg0         ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |cofre|displaySelecionado[3] ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |cofre|contadorDisplay1[3]   ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |cofre|contadorDisplay2[1]   ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |cofre|contadorDisplay3[1]   ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |cofre|contadorDisplay4[2]   ;
+; 4:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |cofre|display4[3]~reg0      ;
+; 4:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |cofre|display3[3]~reg0      ;
+; 4:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |cofre|display2[2]~reg0      ;
+; 4:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |cofre|display1[6]~reg0      ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; No         ; |cofre|usuario1_id3          ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; No         ; |cofre|usuario1_sn3          ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 6 LEs                ; 3 LEs                  ; No         ; |cofre|Selector14            ;
+; 26:1               ; 12 bits   ; 204 LEs       ; 84 LEs               ; 120 LEs                ; No         ; |cofre|Selector0             ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------+
+
+
++-----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |cofre ;
++--------------------------+-------+------------------------------------+
+; Parameter Name           ; Value ; Type                               ;
++--------------------------+-------+------------------------------------+
+; espera                   ; 0000  ; Unsigned Binary                    ;
+; cadastroID               ; 0001  ; Unsigned Binary                    ;
+; registraID               ; 0010  ; Unsigned Binary                    ;
+; zerarApagarDisplay       ; 0011  ; Unsigned Binary                    ;
+; apagarDisplay            ; 0100  ; Unsigned Binary                    ;
+; cadastroSenha            ; 0101  ; Unsigned Binary                    ;
+; registraSenha            ; 0110  ; Unsigned Binary                    ;
+; digitarIdParaConferir    ; 0111  ; Unsigned Binary                    ;
+; registrarIdConferir      ; 1000  ; Unsigned Binary                    ;
+; digitarSenhaParaConferir ; 1001  ; Unsigned Binary                    ;
+; registraSenhaConferir    ; 1010  ; Unsigned Binary                    ;
+; confID                   ; 1011  ; Unsigned Binary                    ;
++--------------------------+-------+------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:02     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Analysis & Synthesis
+    Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+    Info: Processing started: Tue Oct 16 22:35:56 2018
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off cofre -c cofre
+Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12021): Found 1 design units, including 1 entities, in source file cofre.v
+    Info (12023): Found entity 1: cofre
+Info (12127): Elaborating entity "cofre" for the top level hierarchy
+Warning (10242): Verilog HDL Function Declaration warning at cofre.v(91): variable "segmentosSelecionados" may have a Don't Care value because it may not be assigned a value in every possible path through the statements preceding its use
+Warning (10776): Verilog HDL warning at cofre.v(72): variable segmentosSelecionados in static task or function segmentosDisplay may have unintended latch behavior
+Warning (10030): Net "segmentosDisplay.segmentosSelecionados" at cofre.v(72) has no driver or initial value, using a default initial value '0'
+Info (17049): 7 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 334 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 8 input pins
+    Info (21059): Implemented 30 output pins
+    Info (21061): Implemented 296 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 4 warnings
+    Info: Peak virtual memory: 4623 megabytes
+    Info: Processing ended: Tue Oct 16 22:36:03 2018
+    Info: Elapsed time: 00:00:07
+    Info: Total CPU time (on all processors): 00:00:04
+
+

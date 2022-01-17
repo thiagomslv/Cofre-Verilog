@@ -1,0 +1,21 @@
+
+State Machine - |cofre|estado_anterior
+Name estado_anterior.registraID estado_anterior.registraSenha estado_anterior.0000 
+estado_anterior.0000 0 0 0 
+estado_anterior.registraID 1 0 1 
+estado_anterior.registraSenha 0 1 1 
+
+State Machine - |cofre|estado_atual
+Name estado_atual.confID estado_atual.registraSenhaConferir estado_atual.digitarSenhaParaConferir estado_atual.registrarIdConferir estado_atual.digitarIdParaConferir estado_atual.registraSenha estado_atual.cadastroSenha estado_atual.apagarDisplay estado_atual.zerarApagarDisplay estado_atual.registraID estado_atual.cadastroID estado_atual.0000 
+estado_atual.0000 0 0 0 0 0 0 0 0 0 0 0 0 
+estado_atual.cadastroID 0 0 0 0 0 0 0 0 0 0 1 1 
+estado_atual.registraID 0 0 0 0 0 0 0 0 0 1 0 1 
+estado_atual.zerarApagarDisplay 0 0 0 0 0 0 0 0 1 0 0 1 
+estado_atual.apagarDisplay 0 0 0 0 0 0 0 1 0 0 0 1 
+estado_atual.cadastroSenha 0 0 0 0 0 0 1 0 0 0 0 1 
+estado_atual.registraSenha 0 0 0 0 0 1 0 0 0 0 0 1 
+estado_atual.digitarIdParaConferir 0 0 0 0 1 0 0 0 0 0 0 1 
+estado_atual.registrarIdConferir 0 0 0 1 0 0 0 0 0 0 0 1 
+estado_atual.digitarSenhaParaConferir 0 0 1 0 0 0 0 0 0 0 0 1 
+estado_atual.registraSenhaConferir 0 1 0 0 0 0 0 0 0 0 0 1 
+estado_atual.confID 1 0 0 0 0 0 0 0 0 0 0 1 
